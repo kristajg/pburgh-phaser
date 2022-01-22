@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 // 3rd party libraries
+import open from 'open';
 import path from 'path';
 import express from 'express';
 import cookieParser from 'cookie-parser';
@@ -18,4 +19,5 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Express server listening on port: ${port}`);
+  open(`http://localhost:8080/`, { app: { name: 'google chrome' } });
 });
