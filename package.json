@@ -1,0 +1,27 @@
+{
+  "name": "pburgh-phaser",
+  "version": "1.0.0",
+  "description": "pburgh beta",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristajg/pburgh-phaser.git"
+  },
+  "author": "Krista Goralczyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristajg/pburgh-phaser/issues"
+  },
+  "homepage": "https://github.com/kristajg/pburgh-phaser#readme",
+  "dependencies": {
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "dotenv": "^14.2.0",
+    "phaser": "^3.55.2"
+  }
+}
