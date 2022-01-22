@@ -23,7 +23,6 @@ class GameScene extends Phaser.Scene {
     this.cameras.main.setPosition(32, 32);
 
     // Sprites
-    this.load.spritesheet('toast', toast, { frameWidth: 32, frameHeight: 32 });
     this.load.spritesheet('bird', bird, { frameWidth: 64, frameHeight: 64 });
   }
 
