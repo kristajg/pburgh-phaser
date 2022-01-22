@@ -2,11 +2,9 @@ import Phaser from 'phaser';
 
 // Image Assets
 import bird from '../assets/sprites/birdSpriteSheet.png';
-import toast from '../assets/sprites/toastSpriteSheet.png';
 
 // Animations
 import { createPlayerAnims } from '../anims/playerAnims';
-import { createToastAnims } from '../anims/itemAnims';
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -14,11 +12,9 @@ class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    console.log('preload hit')
     // Variables
     this.cursors;
     this.player;
-    this.toasts;
 
     // Camera
     this.cameras.main.setBackgroundColor(0x9900e3);
@@ -34,7 +30,6 @@ class GameScene extends Phaser.Scene {
   create() {
     // Initialize animations
     createPlayerAnims(this.anims);
-    createToastAnims(this.anims);
 
     // Create & place player
     this.player = this.physics.add.sprite(100, 450, 'bird');
@@ -43,15 +38,6 @@ class GameScene extends Phaser.Scene {
     this.player.body.setCollideWorldBounds(true);
     this.player.x = 0;
     this.player.y = 300;
-
-
-    // Create & place toasts
-    this.toasts = this.physics.add.staticGroup();
-    this.toasts.create(100, 290, 'toast');
-
-
-    // Play animations
-    this.toasts.playAnimation({ key: 'toastSpin' });
 
     // Cursors
     this.cursors = this.input.keyboard.createCursorKeys();
