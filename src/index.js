@@ -1,3 +1,3 @@
-import phaser from 'phaser';
+// import phaser from 'phaser';
 
-console.log('its up')
+console.log('its up');
