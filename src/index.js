@@ -1,8 +1,9 @@
 import Phaser from 'phaser';
-import gameConfig from './config/gameConfig';
+import {config} from './config/gameConfig';
 
 window.addEventListener('load', () => {
-  const game = new Phaser.Game(gameConfig);
+  console.log('game loaded');
+  const game = new Phaser.Game(config);
 });
 
-console.log('its up~~');
+console.log('its up!!');
