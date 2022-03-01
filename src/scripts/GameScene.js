@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 // Image Assets
-import bird from '../assets/sprites/birdSpriteSheet.png';
+import pigeon from '../assets/sprites/pigeonSpritesheet.png';
 
 // Animations
 import { createPlayerAnims } from '../anims/playerAnims';
@@ -12,54 +12,100 @@ class GameScene extends Phaser.Scene {
   }
 
   preload() {
-    // Variables
+    // Provide access to canvas element
+    this.canvas = this.sys.game.canvas;
+
+    // Custom variables
     this.cursors;
     this.player;
+    this.keys;
 
     // Camera
-    this.cameras.main.setBackgroundColor(0x9900e3);
+    this.cameras.main.setBackgroundColor('#ffffff');
     this.cameras.main.height = 256;
     this.cameras.main.width = 336;
     this.cameras.main.setPosition(32, 32);
 
     // Sprites
-    this.load.spritesheet('bird', bird, { frameWidth: 64, frameHeight: 64 });
+    this.load.spritesheet('pigeon', pigeon, { frameWidth: 16, frameHeight: 16 });
+
+    // Tilemaps
+    // GO HERE
   }
 
   create() {
+    // Initialize keys
+    const { LEFT, RIGHT, UP, DOWN, W, A, S, D } = Phaser.Input.Keyboard.KeyCodes;
+    this.keys = this.input.keyboard.addKeys({
+      left: LEFT,
+      right: RIGHT,
+      up: UP,
+      down: DOWN,
+      w: W,
+      a: A,
+      s: S,
+      d: D,
+    });
+
     // Initialize animations
     createPlayerAnims(this.anims);
 
-    // Create & place player
-    this.player = this.physics.add.sprite(100, 450, 'bird');
+    // Player
+    this.player = this.physics.add.sprite(200, 120, 'pigeon').setScale(2);
     this.cameras.main.startFollow(this.player, true, 0.8, 0.8);
-    // this.cameras.main.startFollow(this.player, true, 0.8, 0.8);
     this.player.body.setCollideWorldBounds(true);
-    this.player.x = 0;
-    this.player.y = 300;
 
     // Cursors
     this.cursors = this.input.keyboard.createCursorKeys();
   }
 
   update() {
-    // Player walk
-    if (this.cursors.left.isDown) {
-      this.player.setVelocityX(-160);
-      this.player.anims.play('left', true);
-    } else if (this.cursors.right.isDown) {
-      this.player.setVelocityX(160);
-      this.player.anims.play('right', true);
-    } else {
-      this.player.setVelocityX(0);
-      this.player.anims.play('turn');
+    const { keys } = this;
+    const speed = 50;
+    // const previousVelocity = this.player.body.velocity.clone();
+
+    this.player.body.setVelocity(0);
+
+    // Player movement
+    if (keys.left.isDown || keys.a.isDown) {
+      this.player.body.setVelocityX(-speed);
+    } else if (keys.right.isDown || keys.d.isDown) {
+      this.player.body.setVelocityX(speed);
     }
 
-    // Player jump
-    // TODO: add idle, jump, run animations to sprite sheet
-    if (this.cursors.up.isDown && this.player.body.touching.down) {
-      this.player.setVelocityY(-330);
+    if (keys.up.isDown || keys.w.isDown) {
+      this.player.body.setVelocityY(-speed);
+    } else if (keys.down.isDown || keys.s.isDown) {
+      this.player.body.setVelocityY(speed);
     }
+
+    this.player.body.velocity.normalize().scale(speed); // idk wtf this is!!
+
+    // Player animations
+    if (keys.up.isDown || keys.w.isDown) {
+      this.player.anims.play('player-up', true);
+    } else if (keys.down.isDown || keys.s.isDown) {
+      this.player.anims.play('player-down', true);
+    } else if (keys.left.isDown || keys.a.isDown) {
+      this.player.anims.play('player-left', true);
+    } else if (keys.right.isDown || keys.d.isDown) {
+      this.player.anims.play('player-right', true);
+    } else {
+      this.player.anims.stop();
+    }
+
+    // idle animations
+    // if (this.player.body.velocity.x === 0 && this.player.body.velocity.y === 0) {
+    //   if (previousVelocity.x < 0) {
+    //       this.player.setFrame(this.idleFrame.left)
+    //   } else if (previousVelocity.x > 0) {
+    //       this.player.setFrame(this.idleFrame.right)
+    //   } else if (previousVelocity.y < 0) {
+    //       this.player.setFrame(this.idleFrame.up)
+    //   } else if (previousVelocity.y > 0) {
+    //       this.player.setFrame(this.idleFrame.down)
+    //   }
+    // }
   }
 }
 

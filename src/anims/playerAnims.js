@@ -1,20 +1,28 @@
+const frameRate = 8;
+
 export const createPlayerAnims = anims => {
   anims.create({
-    key: 'left',
-    frames: anims.generateFrameNumbers('bird', { start: 0, end: 3 }),
-    frameRate: 10,
+    key: 'player-left',
+    frames: anims.generateFrameNumbers('pigeon', { start: 8, end: 11 }),
+    frameRate,
     repeat: -1,
   });
   anims.create({
-    key: 'right',
-    frames: anims.generateFrameNumbers('bird', { start: 5, end: 8 }),
-    frameRate: 10,
+    key: 'player-right',
+    frames: anims.generateFrameNumbers('pigeon', { start: 4, end: 7 }),
+    frameRate,
     repeat: -1,
   });
   anims.create({
-    key: 'turn',
-    frames: [{ key: 'bird', frame: 4 }],
-    frameRate: 10,
+    key: 'player-up',
+    frames: anims.generateFrameNumbers('pigeon', { start: 16, end: 19 }),
+    frameRate,
+    repeat: -1,
+  });
+  anims.create({
+    key: 'player-down',
+    frames: anims.generateFrameNumbers('pigeon', { start: 12, end: 15 }),
+    frameRate,
     repeat: -1,
   });
 };
