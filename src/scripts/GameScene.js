@@ -2,9 +2,15 @@ import Phaser from 'phaser';
 
 // Image Assets
 import pigeon from '../assets/sprites/pigeonSpritesheet.png';
+import toast from '../assets/sprites/toastSpriteSheet.png';
+import tiles from '../assets/tilemaps/0x72_DungeonTilesetII_v1.3.png';
+
+// Tilemaps
+import firstDungeon from '../assets/tilemaps/firstDungeon.json';
 
 // Animations
 import { createPlayerAnims } from '../anims/playerAnims';
+import { createToastAnims } from '../anims/itemAnims';
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -13,12 +19,13 @@ class GameScene extends Phaser.Scene {
 
   preload() {
     // Provide access to canvas element
-    this.canvas = this.sys.game.canvas;
+    // this.canvas = this.sys.game.canvas;
 
     // Custom variables
     this.cursors;
     this.player;
     this.keys;
+    this.toasts;
 
     // Camera
     this.cameras.main.setBackgroundColor('#ffffff');
@@ -28,9 +35,15 @@ class GameScene extends Phaser.Scene {
 
     // Sprites
     this.load.spritesheet('pigeon', pigeon, { frameWidth: 16, frameHeight: 16 });
+    this.load.spritesheet('toast', toast, { frameWidth: 32, frameHeight: 32 });
 
     // Tilemaps
-    // GO HERE
+    this.add.image('tiles', tiles);
+    this.load.tilemapTiledJSON('dungeon', firstDungeon);
+
+    // Setup overlap events
+    // this.physics.add.overlap(this.player, this.toasts, this.collectItem);
+    // this.physics.add.overlap();
   }
 
   create() {
@@ -49,14 +62,24 @@ class GameScene extends Phaser.Scene {
 
     // Initialize animations
     createPlayerAnims(this.anims);
-
+    createToastAnims(this.anims);
+  
     // Player
     this.player = this.physics.add.sprite(200, 120, 'pigeon').setScale(2);
-    this.cameras.main.startFollow(this.player, true, 0.8, 0.8);
-    this.player.body.setCollideWorldBounds(true);
+
+    // Bonus items
+    this.toasts = this.physics.add.staticGroup();
+    this.toasts.create(280, 200, 'toast');
 
     // Cursors
     this.cursors = this.input.keyboard.createCursorKeys();
+
+    // Play toast animation by default
+    this.toasts.playAnimation({ key: 'toastSpin' });
+
+    // Tilemaps
+    const map = this.make.tilemap({ key: 'dungeon' });
+    map.addTilesetImage('0x72_DungeonTilesetII_v1.4', 'tiles');
   }
 
   update() {
@@ -93,19 +116,13 @@ class GameScene extends Phaser.Scene {
     } else {
       this.player.anims.stop();
     }
+  }
 
-    // idle animations
-    // if (this.player.body.velocity.x === 0 && this.player.body.velocity.y === 0) {
-    //   if (previousVelocity.x < 0) {
-    //       this.player.setFrame(this.idleFrame.left)
-    //   } else if (previousVelocity.x > 0) {
-    //       this.player.setFrame(this.idleFrame.right)
-    //   } else if (previousVelocity.y < 0) {
-    //       this.player.setFrame(this.idleFrame.up)
-    //   } else if (previousVelocity.y > 0) {
-    //       this.player.setFrame(this.idleFrame.down)
-    //   }
-    // }
+  collectItem (player, item) {
+    // console.log('item is ', item);
+    // item.disableBody(true, true);
+    // score += 10;
+    // scoreText.setText(`Score is: ${score}`);
   }
 }
 

@@ -5,7 +5,7 @@ export const config = {
   type: Phaser.AUTO,
   parent: 'thegame',
   width: 400,
-  height: 320,
+  height: 250,
   physics: {
     default: 'arcade',
     arcade: {
@@ -14,10 +14,13 @@ export const config = {
     },
   },
   scale: {
-    mode: Phaser.Scale.FIT,
-    autoCenter: Phaser.Scale.CENTER_BOTH,
-    parent: 'thegame',
+    zoom: 2,
   },
+  // scale: {
+  //   mode: Phaser.Scale.FIT,
+  //   autoCenter: Phaser.Scale.CENTER_BOTH,
+  //   parent: 'thegame',
+  // },
   pixelArt: true,
   scene: playGame,
 };
