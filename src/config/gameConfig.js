@@ -17,6 +17,5 @@ export const config = {
   scale: {
     zoom: 3,
   },
-  pixelArt: true,
   scene:  [ Preloader, Game ],
 };

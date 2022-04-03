@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 // Image Assets
 import pigeon from '../assets/sprites/pigeonSpritesheet.png';
+import carl from '../assets/sprites/carl01.png';
 import toast from '../assets/sprites/toastSpriteSheet.png';
 import tiles from '../assets/tilemaps/dungeonTileset.png';
 
@@ -17,6 +18,7 @@ export default class Preloader extends Phaser.Scene {
     // Sprites
     this.load.spritesheet('pigeon', pigeon, { frameWidth: 16, frameHeight: 16 });
     this.load.spritesheet('toast', toast, { frameWidth: 32, frameHeight: 32 });
+    this.load.spritesheet('carl', carl, { frameWidth: 16, frameHeight: 16 });
 
     // Tilemaps
     this.load.image('tiles', tiles);
