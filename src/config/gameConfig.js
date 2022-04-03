@@ -1,9 +1,10 @@
 import Phaser from 'phaser';
-import playGame from '../scripts/GameScene';
+import Preloader from '../scripts/Preloader';
+import Game from '../scripts/GameScene';
 
 export const config = {
   type: Phaser.AUTO,
-  parent: 'thegame',
+  parent: 'thegame', // ID of dom element to add canvas to
   width: 400,
   height: 250,
   physics: {
@@ -14,13 +15,8 @@ export const config = {
     },
   },
   scale: {
-    zoom: 2,
+    zoom: 3,
   },
-  // scale: {
-  //   mode: Phaser.Scale.FIT,
-  //   autoCenter: Phaser.Scale.CENTER_BOTH,
-  //   parent: 'thegame',
-  // },
   pixelArt: true,
-  scene: playGame,
+  scene:  [ Preloader, Game ],
 };
