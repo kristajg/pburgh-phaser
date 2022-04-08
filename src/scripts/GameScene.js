@@ -132,6 +132,9 @@ class GameScene extends Phaser.Scene {
 
     if (speechBubble.visible && !isInZone) {
       speechBubble.visible = false;
+      if (this.textBox) {
+        this.textBox.destroy();
+      }
     }
     isInZone = false;
   }
