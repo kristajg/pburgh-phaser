@@ -13,7 +13,7 @@ export const config = {
     default: 'arcade',
     arcade: {
       gravity: { y: 0 }, // Top down doesn't need gravity
-      // debug: false,
+      debug: true,
     },
   },
   // scale: {

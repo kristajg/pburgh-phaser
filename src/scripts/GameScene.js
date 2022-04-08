@@ -6,7 +6,11 @@ import { createToastAnims } from '../anims/itemAnims';
 
 let player;
 let carl;
+let carlZone;
 let speechBubble;
+let textBoxIsOpen = false;
+let isInZone = false;
+
 // let toasts;
 
 // Dialoguebox 
@@ -15,7 +19,6 @@ const COLOR_PRIMARY = 0x352b42;
 const COLOR_LIGHT = 0xb8b5b9;
 const COLOR_DARK = 0x260e04;
 
-let textBoxIsOpen = false;
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -55,13 +58,19 @@ class GameScene extends Phaser.Scene {
     createPlayerAnims(this.anims);
     createToastAnims(this.anims);
   
-    // Add test NPC
+    // Add test NPC && zone around it
+    // TODO: separate NPC logic into it's own class
     carl = this.physics.add.staticSprite(230, 100, 'carl');
+    carlZone = this.add.zone(230, 100, 20, 20);
+    this.physics.world.enable(carlZone);
+    carlZone.body.setAllowGravity(false);
+    carlZone.body.moves = false;
 
     // Player
     player = this.physics.add.sprite(200, 120, 'pigeon');
     this.physics.add.collider(player, worldLayer);
-    this.physics.add.collider(player, carl, this.showSpeechBubble, null, this);
+    this.physics.add.collider(player, carl);
+    this.physics.add.overlap(player, carlZone, this.showSpeechBubble, null, this);
     this.cameras.main.startFollow(player, true);
 
     // Game mechanics
@@ -115,21 +124,27 @@ class GameScene extends Phaser.Scene {
     if (speechBubble.visible && keys.enter.isDown && !textBoxIsOpen) {
       this.talkToNPC();
     }
-    // Pres escale to close textbox
+
+    // Press escape to close textbox
     if(keys.esc.isDown && textBoxIsOpen) {
       this.textBox.destroy();
     }
+
+    if (speechBubble.visible && !isInZone) {
+      speechBubble.visible = false;
+    }
+    isInZone = false;
   }
 
-  showSpeechBubble(player, npc) {
-    // Could use the below to show bubble by correct NPC
-    console.log('Which NPC? ', npc.texture.key);
+  showSpeechBubble() {
     speechBubble.visible = true;
+    isInZone = true;
   }
 
   talkToNPC() {
     // Add a textbox if one isnt open
     if (!textBoxIsOpen) {
+      // Create new text box
       this.textBox = createTextBox(this, 50, 150, {
         wrapWidth: 200,
         fixedWidth: 200,
