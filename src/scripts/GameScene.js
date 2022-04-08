@@ -14,7 +14,7 @@ let isInZone = false;
 // let toasts;
 
 // Dialoguebox 
-const sampleText = 'hey there my guy';
+const sampleText = 'Carl: Hey man. How\'s it going?';
 const COLOR_PRIMARY = 0x352b42;
 const COLOR_LIGHT = 0xb8b5b9;
 const COLOR_DARK = 0x260e04;
@@ -60,8 +60,8 @@ class GameScene extends Phaser.Scene {
   
     // Add test NPC && zone around it
     // TODO: separate NPC logic into it's own class
-    carl = this.physics.add.staticSprite(230, 100, 'carl');
-    carlZone = this.add.zone(230, 100, 20, 20);
+    carl = this.physics.add.staticSprite(232, 102, 'carl');
+    carlZone = this.add.zone(232, 102, 20, 20);
     this.physics.world.enable(carlZone);
     carlZone.body.setAllowGravity(false);
     carlZone.body.moves = false;
@@ -127,12 +127,14 @@ class GameScene extends Phaser.Scene {
 
     // Press escape to close textbox
     if(keys.esc.isDown && textBoxIsOpen) {
+      textBoxIsOpen = false;
       this.textBox.destroy();
     }
 
     if (speechBubble.visible && !isInZone) {
       speechBubble.visible = false;
       if (this.textBox) {
+        textBoxIsOpen = false;
         this.textBox.destroy();
       }
     }
