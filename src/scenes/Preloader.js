@@ -9,6 +9,7 @@ import tiles from '../assets/tilemaps/dungeonTileset.png';
 
 // Tilemaps
 import myDungeon from '../assets/tilemaps/myDungeon.json';
+import pipsHouse from '../assets/tilemaps/pipsHouse.json';
 
 export default class Preloader extends Phaser.Scene {
   constructor() {
@@ -25,6 +26,7 @@ export default class Preloader extends Phaser.Scene {
     // Tilemaps
     this.load.image('tiles', tiles);
     this.load.tilemapTiledJSON('myDungeon', myDungeon);
+    this.load.tilemapTiledJSON('pipsHouse', pipsHouse);
   }
 
   create() {

@@ -1,8 +1,10 @@
 import Phaser from 'phaser';
 import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
 
-import Preloader from '../scripts/Preloader';
-import Game from '../scripts/GameScene';
+import Preloader from '../scenes/Preloader';
+import Game from '../scenes/GameScene';
+import PipsHouse from '../scenes/PipsHouse';
+// import NeighborhoodOne from '../scenes/NeighborhoodOne';
 
 export const config = {
   type: Phaser.AUTO,
@@ -31,5 +33,5 @@ export const config = {
       mapping: 'rexUI'
     }],
   },
-  scene:  [ Preloader, Game ],
+  scene:  [ Preloader, Game, PipsHouse ],
 };

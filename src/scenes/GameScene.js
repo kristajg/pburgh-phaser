@@ -40,7 +40,7 @@ class GameScene extends Phaser.Scene {
     worldLayer.setCollisionByProperty({ collides: true });
 
     // Initialize keys
-    const { LEFT, RIGHT, UP, DOWN, ENTER, ESC, W, A, S, D } = Phaser.Input.Keyboard.KeyCodes;
+    const { LEFT, RIGHT, UP, DOWN, ENTER, ESC, W, A, S, D, P } = Phaser.Input.Keyboard.KeyCodes;
     this.keys = this.input.keyboard.addKeys({
       left: LEFT,
       right: RIGHT,
@@ -52,6 +52,7 @@ class GameScene extends Phaser.Scene {
       a: A,
       s: S,
       d: D,
+      p: P,
     });
 
     // Initialize animations
@@ -139,6 +140,11 @@ class GameScene extends Phaser.Scene {
       }
     }
     isInZone = false;
+
+    // EXPERIMENT: press P to go to pip's house scene
+    if (keys.p.isDown) {
+      this.scene.start('PipsHouse');
+    }
   }
 
   showSpeechBubble() {
