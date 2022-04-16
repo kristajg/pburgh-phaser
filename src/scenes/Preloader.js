@@ -1,15 +1,17 @@
 import Phaser from 'phaser';
 
-// Image Assets
+// Sprites
 import pigeon from '../assets/sprites/pigeonSpritesheet.png';
 import carl from '../assets/sprites/carl01.png';
 import speechBubble from '../assets/sprites/speechBubble.png';
 import toast from '../assets/sprites/toastSpriteSheet.png';
-import tiles from '../assets/tilemaps/dungeonTileset.png';
 
-// Tilemaps
+// Tiles & Tilemaps
+import tiles from '../assets/tilemaps/dungeonTileset.png';
+import pigeonburghTiles from '../assets/tilemaps/pigeonburghTileset1.png';
 import myDungeon from '../assets/tilemaps/myDungeon.json';
-import pipsHouse from '../assets/tilemaps/pipsHouse.json';
+// import pipsHouse from '../assets/tilemaps/pipsHouse.json';
+import pipsHouseMap from '../assets/tilemaps/pipsHouseMap.json';
 
 export default class Preloader extends Phaser.Scene {
   constructor() {
@@ -25,8 +27,10 @@ export default class Preloader extends Phaser.Scene {
 
     // Tilemaps
     this.load.image('tiles', tiles);
+    this.load.image('pigeonburghTiles', pigeonburghTiles);
     this.load.tilemapTiledJSON('myDungeon', myDungeon);
-    this.load.tilemapTiledJSON('pipsHouse', pipsHouse);
+    this.load.tilemapTiledJSON('pipsHouseMap', pipsHouseMap);
+    // this.load.tilemapTiledJSON('pipsHouse', pipsHouse);
   }
 
   create() {
