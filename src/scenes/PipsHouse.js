@@ -1,5 +1,8 @@
 import Phaser from 'phaser';
 
+// Prefabs
+import Player from '../prefabs/Player';
+
 let player;
 
 export default class PipsHouse extends Phaser.Scene {
@@ -21,12 +24,13 @@ export default class PipsHouse extends Phaser.Scene {
 
 
     // Player
-    player = this.physics.add.sprite(100, 120, 'pigeon');
+    player = new Player(this, 100, 120, 'pigeon');
     this.physics.add.collider(player, worldLayer);
     this.cameras.main.startFollow(player, true);
   }
 
   update() {
+    player.update();
     // if (keys.p.isDown) {
     //   this.scene.start('GameScene');
     // }

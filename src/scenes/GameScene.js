@@ -1,8 +1,10 @@
 import Phaser from 'phaser';
 
+// Prefabs
+import Player from '../prefabs/Player';
+
 // Animations
-import { createPlayerAnims } from '../anims/playerAnims';
-import { createToastAnims } from '../anims/itemAnims';
+// import { createToastAnims } from '../anims/itemAnims';
 
 let player;
 let carl;
@@ -40,24 +42,15 @@ class GameScene extends Phaser.Scene {
     worldLayer.setCollisionByProperty({ collides: true });
 
     // Initialize keys
-    const { LEFT, RIGHT, UP, DOWN, ENTER, ESC, W, A, S, D, P } = Phaser.Input.Keyboard.KeyCodes;
+    const { ENTER, ESC, P } = Phaser.Input.Keyboard.KeyCodes;
     this.keys = this.input.keyboard.addKeys({
-      left: LEFT,
-      right: RIGHT,
-      up: UP,
-      down: DOWN,
       enter: ENTER,
       esc: ESC,
-      w: W,
-      a: A,
-      s: S,
-      d: D,
       p: P,
     });
 
     // Initialize animations
-    createPlayerAnims(this.anims);
-    createToastAnims(this.anims);
+    // createToastAnims(this.anims);
   
     // Add test NPC && zone around it
     // TODO: separate NPC logic into it's own class
@@ -68,7 +61,8 @@ class GameScene extends Phaser.Scene {
     carlZone.body.moves = false;
 
     // Player
-    player = this.physics.add.sprite(200, 120, 'pigeon');
+    player = new Player(this, 200, 120, 'pigeon');
+    // player = this.physics.add.sprite(200, 120, 'pigeon');
     this.physics.add.collider(player, worldLayer);
     this.physics.add.collider(player, carl);
     this.physics.add.overlap(player, carlZone, this.showSpeechBubble, null, this);
@@ -89,37 +83,8 @@ class GameScene extends Phaser.Scene {
   }
 
   update() {
+    player.update();
     const { keys } = this;
-    const speed = 120;
-    player.body.setVelocity(0);
-
-    // Player movement
-    if (keys.left.isDown || keys.a.isDown) {
-      player.body.setVelocityX(-speed);
-    } else if (keys.right.isDown || keys.d.isDown) {
-      player.body.setVelocityX(speed);
-    }
-
-    if (keys.up.isDown || keys.w.isDown) {
-      player.body.setVelocityY(-speed);
-    } else if (keys.down.isDown || keys.s.isDown) {
-      player.body.setVelocityY(speed);
-    }
-
-    player.body.velocity.normalize().scale(speed);
-
-    // Player animations
-    if (keys.up.isDown || keys.w.isDown) {
-      player.anims.play('player-up', true);
-    } else if (keys.down.isDown || keys.s.isDown) {
-      player.anims.play('player-down', true);
-    } else if (keys.left.isDown || keys.a.isDown) {
-      player.anims.play('player-left', true);
-    } else if (keys.right.isDown || keys.d.isDown) {
-      player.anims.play('player-right', true);
-    } else {
-      player.anims.stop();
-    }
 
     // Press enter to open textbox
     if (speechBubble.visible && keys.enter.isDown && !textBoxIsOpen) {
@@ -127,7 +92,7 @@ class GameScene extends Phaser.Scene {
     }
 
     // Press escape to close textbox
-    if(keys.esc.isDown && textBoxIsOpen) {
+    if (keys.esc.isDown && textBoxIsOpen) {
       textBoxIsOpen = false;
       this.textBox.destroy();
     }
@@ -186,9 +151,7 @@ const createTextBox = (scene, x, y, config) => {
 
       background: scene.rexUI.add.roundRectangle(0, 0, 2, 2, 20, COLOR_PRIMARY)
         .setStrokeStyle(2, COLOR_LIGHT),
-
       // icon: scene.rexUI.add.roundRectangle(0, 0, 2, 2, 20, COLOR_DARK),
-
       // text: getBuiltInText(scene, wrapWidth, fixedWidth, fixedHeight),
       text: getBBcodeText(scene, wrapWidth, fixedWidth, fixedHeight),
 
