@@ -8,7 +8,7 @@ import PipsHouse from '../scenes/PipsHouse';
 
 export const config = {
   type: Phaser.AUTO,
-  parent: 'thegame', // ID of dom element to add canvas to
+  parent: 'thegame',
   width: 400,
   height: 250,
   physics: {
