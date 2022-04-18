@@ -20,13 +20,18 @@ export default class PipsHouse extends Phaser.Scene {
     map.createLayer('below', tileset);
     const worldLayer = map.createLayer('worldLayer', tileset);
     worldLayer.setCollisionByProperty({ collides: true });
-    map.createLayer('above', tileset);
+    
 
 
     // Player
     player = new Player(this, 100, 120, 'pigeon');
     this.physics.add.collider(player, worldLayer);
     this.cameras.main.startFollow(player, true);
+
+    // Above tileset loaded after the player
+    const aboveLayer = map.createLayer('above', tileset);
+    aboveLayer.setCollisionByProperty({ collides: true });
+    this.physics.add.collider(player, aboveLayer);
   }
 
   update() {
