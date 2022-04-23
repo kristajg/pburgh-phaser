@@ -71,6 +71,4 @@ export default class Player extends Phaser.GameObjects.Sprite {
       anims.stop();
     }
   }
-
-  // talkToNPC(){}
 }

@@ -18,9 +18,9 @@ const COLOR_LIGHT = 0xb8b5b9;
 const COLOR_DARK = 0x260e04;
 
 
-class GameScene extends Phaser.Scene {
+export default class Neighborhood extends Phaser.Scene {
   constructor() {
-    super('GameScene')
+    super('Neighborhood')
   }
 
   preload() {
@@ -188,5 +188,3 @@ const getBBcodeText = (scene, wrapWidth, fixedWidth, fixedHeight) => {
     maxLines: 3,
   })
 }
-
-export default GameScene;

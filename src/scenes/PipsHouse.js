@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 // Prefabs
 import Player from '../prefabs/Player';
+import InteractiveZone from '../prefabs/InteractiveZone';
 
 let player;
 
@@ -21,6 +22,19 @@ export default class PipsHouse extends Phaser.Scene {
     const worldLayer = map.createLayer('worldLayer', tileset);
     worldLayer.setCollisionByProperty({ collides: true });
     
+    // TODO: Object Layer
+    console.log('Looking for game objects array ', map.objects[0].objects);
+    let objectLayerItems = map.objects[0].objects; // This is an array of game objects
+
+    // loop through objects... see which are interactive zones?
+    // objectLayerItems.forEach(obj => {
+    //   console.log('Obj ', obj);
+    //   new InteractiveZone(this, obj.x, obj.y, obj.properties);
+    //   // obj.properties.find(isZone => {});
+    // });
+    let objectLayerObjects = map.objects[0].objects[0];
+    // console.log('Looking for game objects ONE ', objectLayerObjects);
+
 
 
     // Player
@@ -32,6 +46,11 @@ export default class PipsHouse extends Phaser.Scene {
     const aboveLayer = map.createLayer('above', tileset);
     aboveLayer.setCollisionByProperty({ collides: true });
     this.physics.add.collider(player, aboveLayer);
+
+    // Tutorial: adding overlap with object
+    let coolZone = this.add.zone(objectLayerObjects.x, objectLayerObjects.y, 20, 20);
+    this.physics.world.enable(coolZone); // may not need this?
+    this.physics.add.overlap(player, coolZone, this.didOverlap, null, this);
   }
 
   update() {
@@ -39,5 +58,9 @@ export default class PipsHouse extends Phaser.Scene {
     // if (keys.p.isDown) {
     //   this.scene.start('GameScene');
     // }
+  }
+
+  didOverlap() {
+    console.log('Did overlap!');
   }
 }
