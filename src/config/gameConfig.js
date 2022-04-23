@@ -43,6 +43,6 @@ export const config = {
     Credits,
     Options,
     PipsHouse,
-    // Neighborhood,
+    Neighborhood,
   ],
 };
