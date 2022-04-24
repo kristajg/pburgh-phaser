@@ -1,12 +1,17 @@
 import Phaser from 'phaser';
 import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
 
-import Preloader from '../scripts/Preloader';
-import Game from '../scripts/GameScene';
+import Preloader from '../scenes/Preloader';
+import Game from '../scenes/GameScene';
+// import Credits from '../scenes/Credits';
+// import Title from '../scenes/Title';
+// import Options from '../scenes/Options';
+import PipsHouse from '../scenes/PipsHouse';
+import Neighborhood from '../scenes/Neighborhood';
 
 export const config = {
   type: Phaser.AUTO,
-  parent: 'thegame', // ID of dom element to add canvas to
+  parent: 'thegame',
   width: 400,
   height: 250,
   physics: {
@@ -31,5 +36,13 @@ export const config = {
       mapping: 'rexUI'
     }],
   },
-  scene:  [ Preloader, Game ],
+  scene:  [
+    Preloader,
+    Game,
+    // Title,
+    // Credits,
+    // Options,
+    PipsHouse,
+    Neighborhood,
+  ],
 };
