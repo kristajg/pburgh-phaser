@@ -3,9 +3,9 @@ import RexUIPlugin from 'phaser3-rex-plugins/templates/ui/ui-plugin.js';
 
 import Preloader from '../scenes/Preloader';
 import Game from '../scenes/GameScene';
-import Credits from '../scenes/Credits';
-import Title from '../scenes/Title';
-import Options from '../scenes/Options';
+// import Credits from '../scenes/Credits';
+// import Title from '../scenes/Title';
+// import Options from '../scenes/Options';
 import PipsHouse from '../scenes/PipsHouse';
 import Neighborhood from '../scenes/Neighborhood';
 
@@ -39,9 +39,9 @@ export const config = {
   scene:  [
     Preloader,
     Game,
-    Title,
-    Credits,
-    Options,
+    // Title,
+    // Credits,
+    // Options,
     PipsHouse,
     Neighborhood,
   ],

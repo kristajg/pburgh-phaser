@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="4">
+<map version="1.8" tiledversion="1.8.2" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="16" tileheight="16" infinite="0" nextlayerid="5" nextobjectid="7">
  <editorsettings>
   <export target="pipsHouseMap.json" format="json"/>
  </editorsettings>
@@ -292,10 +292,10 @@
 0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,
 0,25,26,26,26,26,27,0,0,0,
-0,33,34,55,55,34,35,0,0,0,
-0,33,55,55,55,55,35,0,0,0,
-0,33,55,55,55,55,35,0,0,0,
-0,33,34,55,55,34,35,0,0,0,
+0,33,55,55,55,55,55,0,0,0,
+0,33,55,55,55,55,55,0,0,0,
+0,33,55,55,55,55,55,0,0,0,
+0,33,34,34,34,34,35,0,0,0,
 0,33,34,34,34,34,35,0,0,0,
 0,41,42,42,42,42,43,0,0,0
 </data>
@@ -315,21 +315,24 @@
 </data>
  </layer>
  <objectgroup id="4" name="gameObjects">
-  <object id="1" x="57.8182" y="54.1818">
+  <object id="4" x="47.82" y="48.18" width="16" height="8">
    <properties>
-    <property name="name" value="computer"/>
-    <property name="type" value="interactive"/>
+    <property name="interactive" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="3" x="71.8182" y="149.455">
+  <object id="5" x="102.36" y="64.45" width="10" height="8">
    <properties>
-    <property name="changeSceneTo" value="neighborhoodOne"/>
-    <property name="name" value="door"/>
-    <property name="type" value="sceneChange"/>
+    <property name="interactive" type="bool" value="true"/>
+   </properties>
+  </object>
+  <object id="6" x="64" y="147.82" width="16" height="12">
+   <properties>
+    <property name="changeSceneTo" value="Neighborhood"/>
+    <property name="interactive" type="bool" value="false"/>
    </properties>
   </object>
  </objectgroup>
- <layer id="3" name="above" width="10" height="10">
+ <layer id="3" name="above" width="10" height="10" visible="0">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,

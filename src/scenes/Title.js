@@ -25,15 +25,15 @@ export default class Title extends Phaser.Scene {
     this.gameText = this.add.text(0, 0, 'Play', { fontSize: '32px', fill: '#fff' });
     this.centerButtonText(this.gameText, this.gameButton);
 
-    this.gameButton.on('pointerdown', function (pointer) {
+    this.gameButton.on('pointerdown', pointer => {
       this.scene.start('PipsHouse');
-    }.bind(this));
+    });
 
-    this.input.on('pointerover', function (event, gameObjects) {
+    this.input.on('pointerover', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton2');
     });
 
-    this.input.on('pointerout', function (event, gameObjects) {
+    this.input.on('pointerout', (event, gameObjects) => {
       gameObjects[0].setTexture('blueButton1');
     });
   }
@@ -48,7 +48,7 @@ export default class Title extends Phaser.Scene {
   centerButtonText (gameText, gameButton) {
     Phaser.Display.Align.In.Center(
       gameText,
-      gameButton
+      gameButton,
     );
   }
 }

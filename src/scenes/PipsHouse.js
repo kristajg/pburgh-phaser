@@ -24,9 +24,10 @@ export default class PipsHouse extends Phaser.Scene {
     
     // TODO: Object Layer
     console.log('Looking for game objects array ', map.objects[0].objects);
-    let objectLayerItems = map.objects[0].objects; // This is an array of game objects
+    // let objectLayerItems = map.objects[0].objects; // This is an array of game objects
 
-    // loop through objects... see which are interactive zones?
+    // loop through objects... check for interactive zones && create zones for them
+    // and add properties to that zone
     // objectLayerItems.forEach(obj => {
     //   console.log('Obj ', obj);
     //   new InteractiveZone(this, obj.x, obj.y, obj.properties);
@@ -48,9 +49,23 @@ export default class PipsHouse extends Phaser.Scene {
     this.physics.add.collider(player, aboveLayer);
 
     // Tutorial: adding overlap with object
-    let coolZone = this.add.zone(objectLayerObjects.x, objectLayerObjects.y, 20, 20);
-    this.physics.world.enable(coolZone); // may not need this?
-    this.physics.add.overlap(player, coolZone, this.didOverlap, null, this);
+    // let coolZone = this.add.zone(objectLayerObjects.x, objectLayerObjects.y, objectLayerObjects.width, objectLayerObjects.height);
+    // this.physics.world.enable(coolZone); // may not need this?
+    // this.physics.add.overlap(player, coolZone, this.didOverlap, null, this);
+    let objectLayerItems = map.objects[0].objects; // This is an array of game objects
+
+    // loop through objects... check for interactive zones && create zones for them
+    // and add properties to that zone
+    objectLayerItems.forEach(obj => {
+      console.log('Obj ', obj);
+      const interactiveZoneIndex = obj.properties.findIndex(property => {
+        return property.name === 'interactive' && property.value;
+      });
+      const isInteractiveZone = interactiveZoneIndex === 0;
+      console.log('isInteractiveZone! ', isInteractiveZone);
+      // new InteractiveZone(this, obj.x, obj.y, obj.properties);
+      // obj.properties.find(isZone => {});
+    });
   }
 
   update() {
