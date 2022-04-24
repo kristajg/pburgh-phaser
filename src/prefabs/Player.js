@@ -3,10 +3,6 @@ import Phaser from 'phaser';
 // Animations
 import { createPlayerAnims } from '../anims/playerAnims';
 
-// TODO:
-// Handle NPC dialog, from any scene
-// Add stats: Mood, Money, Relationship Status w/each char
-
 export default class Player extends Phaser.GameObjects.Sprite {
   constructor(scene, x, y, textureKey){
     super(scene, x, y, textureKey);
