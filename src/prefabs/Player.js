@@ -8,7 +8,7 @@ import { createPlayerAnims } from '../anims/playerAnims';
 // Add stats: Mood, Money, Relationship Status w/each char
 
 export default class Player extends Phaser.GameObjects.Sprite {
-  constructor(scene, x, y, textureKey, type){
+  constructor(scene, x, y, textureKey){
     super(scene, x, y, textureKey);
 
     this.scene = scene;

@@ -23,7 +23,7 @@ export default class PipsHouse extends Phaser.Scene {
     worldLayer.setCollisionByProperty({ collides: true });
     
     // TODO: Object Layer
-    console.log('Looking for game objects array ', map.objects[0].objects);
+    // console.log('Looking for game objects array ', map.objects[0].objects);
     // let objectLayerItems = map.objects[0].objects; // This is an array of game objects
 
     // loop through objects... check for interactive zones && create zones for them
@@ -33,7 +33,7 @@ export default class PipsHouse extends Phaser.Scene {
     //   new InteractiveZone(this, obj.x, obj.y, obj.properties);
     //   // obj.properties.find(isZone => {});
     // });
-    let objectLayerObjects = map.objects[0].objects[0];
+    // let objectLayerObjects = map.objects[0].objects[0];
     // console.log('Looking for game objects ONE ', objectLayerObjects);
 
 
@@ -48,34 +48,33 @@ export default class PipsHouse extends Phaser.Scene {
     aboveLayer.setCollisionByProperty({ collides: true });
     this.physics.add.collider(player, aboveLayer);
 
-    // Tutorial: adding overlap with object
-    // let coolZone = this.add.zone(objectLayerObjects.x, objectLayerObjects.y, objectLayerObjects.width, objectLayerObjects.height);
-    // this.physics.world.enable(coolZone); // may not need this?
-    // this.physics.add.overlap(player, coolZone, this.didOverlap, null, this);
-    let objectLayerItems = map.objects[0].objects; // This is an array of game objects
+    // Tilemap object layer items
+    const objectLayerItems = map.objects[0].objects;
 
-    // loop through objects... check for interactive zones && create zones for them
-    // and add properties to that zone
+    // TODO: separate this out into util function
     objectLayerItems.forEach(obj => {
-      console.log('Obj ', obj);
-      const interactiveZoneIndex = obj.properties.findIndex(property => {
-        return property.name === 'interactive' && property.value;
-      });
-      const isInteractiveZone = interactiveZoneIndex === 0;
-      console.log('isInteractiveZone! ', isInteractiveZone);
-      // new InteractiveZone(this, obj.x, obj.y, obj.properties);
-      // obj.properties.find(isZone => {});
+      const { x, y, height, width, properties } = obj;
+
+      // Create zone
+      let zone = new InteractiveZone(this, x, y, width, height, properties);
+      this.physics.world.enable(zone);
+
+      // Add overlap function based on zone type
+      let overlapFunction = zone.isInteractiveZone ? this.overlapWithInteractive : this.overlapWithSceneChange;
+      this.physics.add.overlap(player, zone, overlapFunction, null, this);
     });
   }
 
   update() {
     player.update();
-    // if (keys.p.isDown) {
-    //   this.scene.start('GameScene');
-    // }
   }
 
-  didOverlap() {
-    console.log('Did overlap!');
+  overlapWithInteractive() {
+    console.log('Overlap with interactive');
+    // TODO: add textbox for interactive zones
+  }
+
+  overlapWithSceneChange(player, zone) {
+    this.scene.start(zone.sceneChangeName);
   }
 }
