@@ -5,14 +5,15 @@ const COLOR_LIGHT = 0xb8b5b9;
 const COLOR_DARK = 0x260e04;
 
 const GetValue = Phaser.Utils.Objects.GetValue;
+
 export const createTextBox = (scene, x, y, textBoxIsOpen, config) => {
   textBoxIsOpen = true;
-  var wrapWidth = GetValue(config, 'wrapWidth', 0);
-  var fixedWidth = GetValue(config, 'fixedWidth', 0);
-  var fixedHeight = GetValue(config, 'fixedHeight', 0);
+  const wrapWidth = GetValue(config, 'wrapWidth', 0);
+  const fixedWidth = GetValue(config, 'fixedWidth', 0);
+  const fixedHeight = GetValue(config, 'fixedHeight', 0);
   var textBox = scene.rexUI.add.textBox({
-      x: x,
-      y: y,
+      x,
+      y,
 
       background: scene.rexUI.add.roundRectangle(0, 0, 2, 2, 20, COLOR_PRIMARY)
         .setStrokeStyle(2, COLOR_LIGHT),

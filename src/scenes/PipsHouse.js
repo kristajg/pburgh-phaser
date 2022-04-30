@@ -7,8 +7,10 @@ import InteractiveZone from '../prefabs/InteractiveZone';
 // Utils
 import { createTextBox } from '../utils/textBox';
 import { isKeyPressedOnce } from '../utils/input';
+import { placeZonesFromObjectLayer } from '../utils/zones';
 
 let player;
+// TODO: I could put the below in this.data?
 let isInZone = false;
 let speechBubble;
 let textBoxIsOpen = false;
@@ -26,6 +28,8 @@ export default class PipsHouse extends Phaser.Scene {
   }
 
   create() {
+    // console.log('Phaser data ONE ', this.data.set({ name: 'Pip the Pigeon' }))
+
     // Initialize keys
     const { ENTER, ESC } = Phaser.Input.Keyboard.KeyCodes;
     keys = this.input.keyboard.addKeys({
@@ -52,19 +56,7 @@ export default class PipsHouse extends Phaser.Scene {
 
     // Tilemap object layer items
     const objectLayerItems = map.objects[0].objects;
-
-    // TODO: separate this out into util function
-    objectLayerItems.forEach(obj => {
-      const { x, y, height, width, properties } = obj;
-
-      // Create zone
-      let zone = new InteractiveZone(this, x, y, width, height, properties);
-      this.physics.world.enable(zone);
-
-      // Add overlap function based on zone type
-      let overlapFunction = zone.isInteractiveZone ? this.overlapWithInteractive : this.overlapWithSceneChange;
-      this.physics.add.overlap(player, zone, overlapFunction, null, this);
-    });
+    placeZonesFromObjectLayer(this, objectLayerItems, player);
 
     // Speech Bubble: show / hide above interactive zones
     speechBubble = this.add.image(0, 0, 'speechBubble');
@@ -112,10 +104,10 @@ export default class PipsHouse extends Phaser.Scene {
     // Add a textbox if one isnt open
     if (!textBoxIsOpen) {
       // Create new text box
-      this.textBox = createTextBox(this, 50, 150, textBoxIsOpen, {
+      this.textBox = createTextBox(this, 0 - 50, 0, textBoxIsOpen, {
         wrapWidth: 200,
         fixedWidth: 200,
-        fixedHeight: 35,
+        // fixedHeight: 35,
       })
       .start(sampleTexty, 20);
     }

@@ -8,6 +8,7 @@ import Game from '../scenes/GameScene';
 // import Options from '../scenes/Options';
 import PipsHouse from '../scenes/PipsHouse';
 import Neighborhood from '../scenes/Neighborhood';
+import UIScene from '../scenes/UIScene';
 
 export const config = {
   type: Phaser.AUTO,
@@ -39,6 +40,7 @@ export const config = {
   scene:  [
     Preloader,
     Game,
+    UIScene,
     // Title,
     // Credits,
     // Options,
