@@ -6,13 +6,15 @@ import InteractiveZone from '../prefabs/InteractiveZone';
 
 // Utils
 import { createTextBox } from '../utils/textBox';
+import { isKeyPressedOnce } from '../utils/input';
 
 let player;
 let isInZone = false;
 let speechBubble;
 let textBoxIsOpen = false;
+let keys;
 
-const sampleTexty = 'Woopy doop';
+const sampleTexty = 'Its your computer. With the nets and everything.';
 
 export default class PipsHouse extends Phaser.Scene {
   constructor() {
@@ -20,14 +22,13 @@ export default class PipsHouse extends Phaser.Scene {
   }
 
   preload() {
-    this.keys;
     this.textBox;
   }
 
   create() {
     // Initialize keys
     const { ENTER, ESC } = Phaser.Input.Keyboard.KeyCodes;
-    this.keys = this.input.keyboard.addKeys({
+    keys = this.input.keyboard.addKeys({
       enter: ENTER,
       esc: ESC,
     });
@@ -65,32 +66,30 @@ export default class PipsHouse extends Phaser.Scene {
       this.physics.add.overlap(player, zone, overlapFunction, null, this);
     });
 
-    // Speech bubble for interactive zones
-    // I'll be showing / hiding this above wherever the interaction is
-    // TODO: may need to add show / hide zone in objectLayers
-    // TODO: maybe add / destroy is better than showing / hiding...
+    // Speech Bubble: show / hide above interactive zones
     speechBubble = this.add.image(0, 0, 'speechBubble');
     speechBubble.visible = false;
   }
 
   update() {
     player.update();
-    const { keys } = this;
 
     // Press enter to open textbox
-    if (speechBubble.visible && keys.enter.isDown && !textBoxIsOpen) {
+    if (speechBubble.visible && isKeyPressedOnce(keys.enter) && !textBoxIsOpen) {
       this.interactWithObject();
     }
 
-    // Press escape to close textbox
-    if (keys.esc.isDown && textBoxIsOpen) {
-      console.log('escape key pressed');
-      textBoxIsOpen = false;
-      this.textBox.destroy();
-    }
+    // NEEDS FIXED: Press escape to close textbox
+    // console.log('textBoxIsOpen?? ', textBoxIsOpen);
+    // if (isKeyPressedOnce(keys.esc) && textBoxIsOpen) {
+    //   console.log('escape key pressed to close text box');
+    //   textBoxIsOpen = false;
+    //   this.textBox.destroy();
+    // }
 
     if (speechBubble.visible && !isInZone) {
       speechBubble.visible = false;
+      // TODO: below should also depend on textBoxIsOpen
       if (this.textBox) {
         textBoxIsOpen = false;
         this.textBox.destroy();
@@ -100,8 +99,6 @@ export default class PipsHouse extends Phaser.Scene {
   }
 
   overlapWithInteractive(player, zone) {
-    // TODO: this needs to be set ONCE, its updating on every single frame rn
-    // Maybe this needs to be set in the zone class itself
     speechBubble.setPosition(zone.x, zone.y - 22);
     speechBubble.visible = true;
     isInZone = true;
