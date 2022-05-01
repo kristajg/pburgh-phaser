@@ -6,8 +6,7 @@ const COLOR_DARK = 0x260e04;
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
-export const createTextBox = (scene, x, y, textBoxIsOpen, config) => {
-  textBoxIsOpen = true;
+export const createTextBox = (scene, x, y, config) => {
   const wrapWidth = GetValue(config, 'wrapWidth', 0);
   const fixedWidth = GetValue(config, 'fixedWidth', 0);
   const fixedHeight = GetValue(config, 'fixedHeight', 0);

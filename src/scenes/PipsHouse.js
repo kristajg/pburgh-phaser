@@ -64,28 +64,23 @@ export default class PipsHouse extends Phaser.Scene {
     player.update();
 
     // Press enter to open textbox
-    if (speechBubble.visible && isKeyPressedOnce(keys.enter) && !textBoxIsOpen) {
+    if (speechBubble.visible && isKeyPressedOnce(keys.enter)) {
+      // open text box if one isnt open
       eventsCenter.emit('show-text-box', this);
+
       // Freeze pip during dialog
       player.body.moves = false;
     }
 
-    // NEEDS FIXED: Press escape to close textbox
-    // console.log('textBoxIsOpen?? ', textBoxIsOpen);
-    // if (isKeyPressedOnce(keys.esc) && textBoxIsOpen) {
-    //   console.log('escape key pressed to close text box');
-    //   textBoxIsOpen = false;
-    //   this.textBox.destroy();
-    // }
+    // Press escape to close textbox whenever
+    // probably need to make speech bubble visible again
+    if (isKeyPressedOnce(keys.esc)) {
+      eventsCenter.emit('hide-text-box', this);
+      player.body.moves = true;
+    }
 
     if (speechBubble.visible && !isInZone) {
       speechBubble.visible = false;
-
-      // TODO: below should also depend on textBoxIsOpen
-      if (this.textBox) {
-        textBoxIsOpen = false;
-        this.textBox.destroy();
-      }
     }
     isInZone = false;
   }
