@@ -2,21 +2,18 @@ import Phaser from 'phaser';
 
 // Prefabs
 import Player from '../prefabs/Player';
-import InteractiveZone from '../prefabs/InteractiveZone';
+import eventsCenter from '../prefabs/EventsCenter';
 
 // Utils
-import { createTextBox } from '../utils/textBox';
 import { isKeyPressedOnce } from '../utils/input';
 import { placeZonesFromObjectLayer } from '../utils/zones';
 
 let player;
-// TODO: I could put the below in this.data?
+let keys;
 let isInZone = false;
 let speechBubble;
 let textBoxIsOpen = false;
-let keys;
-
-const sampleTexty = 'Its your computer. With the nets and everything.';
+let currentInteractiveObject;
 
 export default class PipsHouse extends Phaser.Scene {
   constructor() {
@@ -28,7 +25,7 @@ export default class PipsHouse extends Phaser.Scene {
   }
 
   create() {
-    // console.log('Phaser data ONE ', this.data.set({ name: 'Pip the Pigeon' }))
+    // console.log('Phaser data ONE ', this.data.set({ name: 'Pip the Pigeon' }));
 
     // Initialize keys
     const { ENTER, ESC } = Phaser.Input.Keyboard.KeyCodes;
@@ -68,7 +65,9 @@ export default class PipsHouse extends Phaser.Scene {
 
     // Press enter to open textbox
     if (speechBubble.visible && isKeyPressedOnce(keys.enter) && !textBoxIsOpen) {
-      this.interactWithObject();
+      eventsCenter.emit('show-text-box', this);
+      // Freeze pip during dialog
+      player.body.moves = false;
     }
 
     // NEEDS FIXED: Press escape to close textbox
@@ -81,6 +80,7 @@ export default class PipsHouse extends Phaser.Scene {
 
     if (speechBubble.visible && !isInZone) {
       speechBubble.visible = false;
+
       // TODO: below should also depend on textBoxIsOpen
       if (this.textBox) {
         textBoxIsOpen = false;
@@ -98,18 +98,5 @@ export default class PipsHouse extends Phaser.Scene {
 
   overlapWithSceneChange(player, zone) {
     this.scene.start(zone.sceneChangeName);
-  }
-
-  interactWithObject() {
-    // Add a textbox if one isnt open
-    if (!textBoxIsOpen) {
-      // Create new text box
-      this.textBox = createTextBox(this, 0 - 50, 0, textBoxIsOpen, {
-        wrapWidth: 200,
-        fixedWidth: 200,
-        // fixedHeight: 35,
-      })
-      .start(sampleTexty, 20);
-    }
   }
 }

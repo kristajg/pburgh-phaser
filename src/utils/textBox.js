@@ -11,7 +11,7 @@ export const createTextBox = (scene, x, y, textBoxIsOpen, config) => {
   const wrapWidth = GetValue(config, 'wrapWidth', 0);
   const fixedWidth = GetValue(config, 'fixedWidth', 0);
   const fixedHeight = GetValue(config, 'fixedHeight', 0);
-  var textBox = scene.rexUI.add.textBox({
+  let textBox = scene.rexUI.add.textBox({
       x,
       y,
 
@@ -60,6 +60,9 @@ export const createTextBox = (scene, x, y, textBoxIsOpen, config) => {
           repeat: 0, // -1: infinity
           yoyo: false
       });
+      }, textBox)
+      .on('complete', function() {
+        console.log('Done with text!!')
       }, textBox)
   //.on('type', function () {
   //})
