@@ -291,10 +291,10 @@
 0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,
-0,25,26,26,26,26,27,0,0,0,
-0,33,55,55,55,55,55,0,0,0,
-0,33,55,55,55,55,55,0,0,0,
-0,33,55,55,55,55,55,0,0,0,
+0,25,55,55,55,55,43,0,0,0,
+0,33,55,55,55,55,43,0,0,0,
+0,33,55,55,55,55,35,0,0,0,
+0,33,55,55,55,55,35,0,0,0,
 0,33,34,34,34,34,35,0,0,0,
 0,33,34,34,34,34,35,0,0,0,
 0,41,42,42,42,42,43,0,0,0
@@ -315,12 +315,12 @@
 </data>
  </layer>
  <objectgroup id="4" name="gameObjects">
-  <object id="4" x="47.82" y="48.18" width="16" height="8">
+  <object id="4" name="computer" type="item" x="47.82" y="48.18" width="16" height="8">
    <properties>
     <property name="interactive" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="5" x="102.36" y="64.45" width="10" height="8">
+  <object id="5" name="bed" type="item" x="102.36" y="64.45" width="10" height="8">
    <properties>
     <property name="interactive" type="bool" value="true"/>
    </properties>
@@ -332,7 +332,7 @@
    </properties>
   </object>
  </objectgroup>
- <layer id="3" name="above" width="10" height="10" visible="0">
+ <layer id="3" name="above" width="10" height="10">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,

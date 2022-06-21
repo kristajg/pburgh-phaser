@@ -1,0 +1,20 @@
+{
+	"version": "1.0.0",
+  "storyline": [
+    {
+      "interactiveName": "computer",
+			"content": [
+				"It's your computer. With the nets and video games.",
+				"No time to play Nest of Birdcraft, you gotta check your work schedule. Boss always posts it last minute.",
+				"And as the star employee of Crouton Italiano (and chief billpayer of your own life) you gotta be on time!"
+			]
+    },
+    {
+      "interactiveName": "bed",
+      "content": [
+        "Bro, you just woke up. Save those ZZZ's for night time.",
+        "Night owls don't make it to the morning shift on time."
+      ]
+    }
+  ]
+}

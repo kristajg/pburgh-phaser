@@ -1,0 +1,39 @@
+{
+	"version": "1.0.0",
+  "storyline": [
+    {
+      "id": 1,
+      "day": 1,
+      "scene": "PipsHouse",
+			"content": [
+				"You are a <span class=\"substep\" data-substep=\"1\">pigeon</span> named Pip in your prime. How coo is that? You reckon it's pretty coo.",
+				"Yaaaaaaawn. What a beautiful day in the neighborhood.",
+				"The rising sun shines a few lucky rays through the thick clouds that cover the valley like the top of an indoor sports dome.",
+				"The surrounding murky rivers and steely gray-blue city buildings shift into focus.",
+				"The morning light reveals a crispy treasure on the ground.",
+				"A corn chip rests conveniently by your feetsies..."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Yes, a pigeon. Stunning royal blue and gray feathers. Orange feetsies."
+				}
+			],
+			"choices": [
+				{
+					"text": "Classic corn chip for breakfast",
+					"nextStepId": 2,
+					"addInventoryItems": []
+				},
+				{
+					"text": "Coffee over corn chips",
+					"nextStepId": 3,
+					"addInventoryItems": []
+				}
+			]
+    },
+    {
+      
+    }
+  ]
+}

@@ -12,17 +12,15 @@ let player;
 let keys;
 let isInZone = false;
 let speechBubble;
-let textBoxIsOpen = false;
-let currentInteractiveObject;
+let currentInteractiveName;
+let currentInteractiveType;
 
 export default class PipsHouse extends Phaser.Scene {
   constructor() {
     super('PipsHouse')
   }
 
-  preload() {
-    this.textBox;
-  }
+  preload() {}
 
   create() {
     // console.log('Phaser data ONE ', this.data.set({ name: 'Pip the Pigeon' }));
@@ -58,6 +56,9 @@ export default class PipsHouse extends Phaser.Scene {
     // Speech Bubble: show / hide above interactive zones
     speechBubble = this.add.image(0, 0, 'speechBubble');
     speechBubble.visible = false;
+
+    // listen for end of dialog reached
+    // eventsCenter.on('end-of-dialog-reached', this.endOfDialogReached, this);
   }
 
   update() {
@@ -66,7 +67,7 @@ export default class PipsHouse extends Phaser.Scene {
     // Press enter to open textbox
     if (speechBubble.visible && isKeyPressedOnce(keys.enter)) {
       // open text box if one isnt open
-      eventsCenter.emit('show-text-box', this);
+      eventsCenter.emit('show-text-box', { scene: this, currentInteractiveName, currentInteractiveType });
 
       // Freeze pip during dialog
       player.body.moves = false;
@@ -89,6 +90,8 @@ export default class PipsHouse extends Phaser.Scene {
     speechBubble.setPosition(zone.x, zone.y - 22);
     speechBubble.visible = true;
     isInZone = true;
+    currentInteractiveName = zone.name;
+    currentInteractiveType = zone.type;
   }
 
   overlapWithSceneChange(player, zone) {

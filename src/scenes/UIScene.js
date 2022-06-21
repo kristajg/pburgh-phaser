@@ -1,11 +1,9 @@
 import Phaser from 'phaser';
 import eventsCenter from '../prefabs/EventsCenter';
-import { createTextBox } from '../utils/textBox';
+import { createTextBox, createCoolTextBox } from '../utils/textBox';
 
-// SO... the text box logic should go here
-// that makes it reusable and separates it from the scene
-// menus could go here...inventory...
-// health bars etc
+// TODO: stats bar: mood/health, cash
+// TODO: ESC menu
 
 let textBox;
 let sampleTexty = `Hey, Its your computer. With the nets and everything. Its so cool how you have a computer and not a lot of other people do in this town. YOu think about your first computer. Disks and all. What a time to be sure.`;
@@ -34,16 +32,22 @@ export default class UIScene extends Phaser.Scene {
     });
   }
 
-  showTextBox(scene, interactiveObject) {
-    console.log('showTextBox fired ', interactiveObject);
+  showTextBox(data) {
+    console.log('data!! ', data);
+    const { scene, currentInteractiveName, currentInteractiveType } = data;
+    console.log('showTextBox fired ', scene);
+    console.log('showTextBox fired ', currentInteractiveName);
 
     if(!textBox){
-      textBox = createTextBox(scene, 0 - 50, 0,  {
-        wrapWidth: 200,
-        fixedWidth: 200,
-        fixedHeight: 50,
-      })
-      .start(sampleTexty, 20); 
+      createCoolTextBox(scene, currentInteractiveName);
+
+      // OLD REXUI TEXTBOX
+      // textBox = createTextBox(scene, 0 - 90, 80,  {
+      //   wrapWidth: 250,
+      //   fixedWidth: 250,
+      //   fixedHeight: 50,
+      // })
+      // .start(sampleTexty, 20); 
     }
   }
 
@@ -54,7 +58,7 @@ export default class UIScene extends Phaser.Scene {
     }
   }
 
-  updateCount(count) {
-    this.label.text = `Count: ${count}`;
-  }
+  // updateCount(count) {
+  //   this.label.text = `Count: ${count}`;
+  // }
 }

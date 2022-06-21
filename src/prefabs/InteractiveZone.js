@@ -1,8 +1,8 @@
 import Phaser from 'phaser';
 
 export default class InteractiveZone extends Phaser.GameObjects.Zone {
-  constructor(scene, x, y, width, height, properties){
-    super(scene, x, y, width, height, properties);
+  constructor(scene, x, y, width, height, properties, name, type){
+    super(scene, x, y, width, height, properties, name, type);
 
     this.scene = scene;
     this.x = x + (width / 2);
@@ -10,6 +10,8 @@ export default class InteractiveZone extends Phaser.GameObjects.Zone {
     this.height = height;
     this.width = width;
     this.properties = properties;
+    this.name = name;
+    this.type = type;
 
     // Set interactive zone
     const interactiveZoneIndex = properties.findIndex(p => {
