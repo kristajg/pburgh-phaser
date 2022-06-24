@@ -13,6 +13,12 @@ import pigeonburghTiles from '../assets/tilemaps/pigeonburghTileset1.png';
 import myDungeon from '../assets/tilemaps/myDungeon.json';
 import pipsHouseMap from '../assets/tilemaps/pipsHouseMap.json';
 
+// Textbot assets
+import arialFontPng from '../assets/fonts/arial/Arial16.png';
+import arialFontXml from '../assets/fonts/arial/Arial16.xml';
+import nextPage from '../assets/sprites/nextPage.png';
+import lastPage from '../assets/sprites/lastPage.png';
+
 export default class Preloader extends Phaser.Scene {
   constructor() {
     super('preloader')
@@ -31,6 +37,12 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('pigeonburghTiles', pigeonburghTiles);
     this.load.tilemapTiledJSON('myDungeon', myDungeon);
     this.load.tilemapTiledJSON('pipsHouseMap', pipsHouseMap);
+
+    // Textbox
+    this.load.bitmapFont('arial', arialFontPng, arialFontXml);
+    // this.load.bitmapFont('arial', '../assets/fonts/arial/Arial20.png', '../assets/fonts/arial/Arial20.xml');
+    this.load.image('nextPage', nextPage);
+    this.load.image('lastPage', lastPage);
   }
 
   create() {

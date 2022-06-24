@@ -1,0 +1,23 @@
+{
+  "day_1": [
+    {
+      "PipsHouse": [
+        {
+          "interactive_objects": [
+            {
+              "computer": [
+                {
+                  "id": 1,
+                  "content": "",
+                  "choices": []
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "Neighborhood": []
+    }
+  ],
+  "day_2": []
+}
