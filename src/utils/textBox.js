@@ -5,7 +5,7 @@ import newStory from '../assets/text/newStory.json';
 const MAX_CHARS_PER_PAGE = 175;
 
 
-const getTextFromFile = interactiveObjectName => {
+export const getTextFromFile = interactiveObjectName => {
   const data = newStory.storyline;
   const storyData = data.find(obj => {
     return obj.interactiveName === interactiveObjectName;
@@ -13,17 +13,7 @@ const getTextFromFile = interactiveObjectName => {
   return storyData.content;
 }
 
-// could have different "types" of text box
-// description / interaction
-// dialog with character
-// TODO: 
-// 1. show only certain amount of chars per "page"
-// 2. update page advance with enter press
-// 3. add next arrow and last X to indicate final screen
-// 4. Add choice boxes: buttons
-// 5. make it fancy: style input to appear "typing"
-// 6. group objects? background & content? or put destroy textbox as it's own util
-export const createCoolTextBox = (scene, interactiveObjectName) => {
+export const createTextBox = (scene, interactiveObjectName, startingText) => {
   // Setup textbox placement & size
   const screenCenterX = scene.cameras.main.worldView.x + scene.cameras.main.width / 2;
   const screenCenterY = scene.cameras.main.worldView.y + scene.cameras.main.height / 2;
@@ -33,23 +23,21 @@ export const createCoolTextBox = (scene, interactiveObjectName) => {
   const textBoxX = screenCenterX - 170;
   const textBoxY = screenCenterY - (textBoxHeight / 2) + 10;
 
-  // Get correct text
-  // now, text will be an array of strings
-  let text = getTextFromFile(interactiveObjectName);
-  // temporarily taking first string from the array of content until i build pagination
-  let tempText = text[0];
+  // // Get correct text
+  // let text = getTextFromFile(interactiveObjectName);
+  // // temporarily taking first string from the array of content until i build pagination
+  // let tempText = text[0];
 
-  let textBoxBackGround = scene.add.rectangle(screenCenterX, screenCenterY, textBoxWidth, textBoxHeight, 0x3f3f74).setStrokeStyle(1, 0xffffff);
-  let textBoxContent = scene.add.bitmapText(textBoxX, textBoxY, 'arial', tempText, 16).setMaxWidth(340);
+  // console.log('text length ', tempText.length);
+
+  const textBoxBackGround = scene.add.rectangle(screenCenterX, screenCenterY, textBoxWidth, textBoxHeight, 0x3f3f74).setStrokeStyle(1, 0xffffff);
+  const textBoxContent = scene.add.bitmapText(textBoxX, textBoxY, 'arial', startingText, 16).setMaxWidth(340);
+  const textBox = {
+    textBoxBackGround,
+    textBoxContent,
+  };
+  return textBox;
 }
-
-export const updateTextPage = (scene, textBox) => {
-  // Next page
-  // Is last page
-  scene.textBox.text = '';
-}
-
-export const destroyTextBox = () => {}
 
 
 
@@ -59,7 +47,7 @@ const COLOR_DARK = 0x260e04;
 
 const GetValue = Phaser.Utils.Objects.GetValue;
 
-export const createTextBox = (scene, x, y, config) => {
+export const createCoolTextBox = (scene, x, y, config) => {
   const wrapWidth = GetValue(config, 'wrapWidth', 0);
   const fixedWidth = GetValue(config, 'fixedWidth', 0);
   const fixedHeight = GetValue(config, 'fixedHeight', 0);

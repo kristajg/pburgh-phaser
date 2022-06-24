@@ -1,12 +1,13 @@
 import Phaser from 'phaser';
 import eventsCenter from '../prefabs/EventsCenter';
-import { createTextBox, createCoolTextBox } from '../utils/textBox';
+import { createTextBox, getTextFromFile } from '../utils/textBox';
 
 // TODO: stats bar: mood/health, cash
 // TODO: ESC menu
 
 let textBox;
-let sampleTexty = `Hey, Its your computer. With the nets and everything. Its so cool how you have a computer and not a lot of other people do in this town. YOu think about your first computer. Disks and all. What a time to be sure.`;
+let currentTextPosition = 0;
+let textContentList = [];
 
 export default class UIScene extends Phaser.Scene {
   constructor() {
@@ -14,11 +15,10 @@ export default class UIScene extends Phaser.Scene {
   }
 
   create() {
-    // listen to show-text-box to show text box
+    // text box listeners
     eventsCenter.on('show-text-box', this.showTextBox, this);
-
-    // listen to hide-text-box to destroy text box
     eventsCenter.on('hide-text-box', this.hideTextBox, this);
+    eventsCenter.on('advance-text-box', this.advanceTextBox, this);
 
     // this.label = this.add.text(10, 10, 'UISCENE', { fontSize: 28 });
     // listen to 'update-count' event & call `updateCount()` when it fires
@@ -33,28 +33,39 @@ export default class UIScene extends Phaser.Scene {
   }
 
   showTextBox(data) {
-    console.log('data!! ', data);
     const { scene, currentInteractiveName, currentInteractiveType } = data;
-    console.log('showTextBox fired ', scene);
-    console.log('showTextBox fired ', currentInteractiveName);
-
     if(!textBox){
-      createCoolTextBox(scene, currentInteractiveName);
-
-      // OLD REXUI TEXTBOX
-      // textBox = createTextBox(scene, 0 - 90, 80,  {
-      //   wrapWidth: 250,
-      //   fixedWidth: 250,
-      //   fixedHeight: 50,
-      // })
-      // .start(sampleTexty, 20); 
+      // Pull current text content based on currentInteractiveName
+      textContentList = getTextFromFile(currentInteractiveName);
+      
+      // Create text box
+      textBox = createTextBox(scene, currentInteractiveName, textContentList[0]);
     }
   }
 
-  hideTextBox() {
+  hideTextBox(player) {
     if(textBox) {
-      textBox.destroy();
+      player.body.moves = true;
+      const { textBoxBackGround, textBoxContent } = textBox;
+      textBoxBackGround.destroy();
+      textBoxContent.destroy();
       textBox = null;
+    }
+  }
+
+  advanceTextBox(data) {
+    if(currentTextPosition !== 0){
+      const { textBoxContent } = textBox;
+      // advance textContent to the next item in the array
+      textBoxContent.setText(textContentList[currentTextPosition]);
+    }
+    currentTextPosition++;
+    // close textbox if the end of content is reached
+    if(currentTextPosition > textContentList.length) {
+      const { player } = data;
+      eventsCenter.emit('hide-text-box', player);
+      eventsCenter.emit('toggle-text-box-visibility', false);
+      currentTextPosition = 0;
     }
   }
 

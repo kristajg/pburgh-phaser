@@ -12,8 +12,11 @@ let player;
 let keys;
 let isInZone = false;
 let speechBubble;
+let textBoxOpen = false;
 let currentInteractiveName;
 let currentInteractiveType;
+let isEnterPressedOnce = false;
+let isEscPressedOnce = false;
 
 export default class PipsHouse extends Phaser.Scene {
   constructor() {
@@ -23,7 +26,13 @@ export default class PipsHouse extends Phaser.Scene {
   preload() {}
 
   create() {
-    // console.log('Phaser data ONE ', this.data.set({ name: 'Pip the Pigeon' }));
+    // text box visibility listener
+    eventsCenter.on('toggle-text-box-visibility', this.toggleTextBoxOpen, this);
+
+    // clean up listeners on scene shut down
+    this.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
+      eventsCenter.off('toggle-text-box-visibility', this.toggleTextBoxOpen, this);
+    })
 
     // Initialize keys
     const { ENTER, ESC } = Phaser.Input.Keyboard.KeyCodes;
@@ -35,6 +44,8 @@ export default class PipsHouse extends Phaser.Scene {
     // Tilemaps
     const map = this.make.tilemap({ key: 'pipsHouseMap' });
     const tileset = map.addTilesetImage('pigeonburghTileset', 'pigeonburghTiles');
+
+    // Below and world layers
     map.createLayer('below', tileset);
     const worldLayer = map.createLayer('worldLayer', tileset);
     worldLayer.setCollisionByProperty({ collides: true });
@@ -56,34 +67,42 @@ export default class PipsHouse extends Phaser.Scene {
     // Speech Bubble: show / hide above interactive zones
     speechBubble = this.add.image(0, 0, 'speechBubble');
     speechBubble.visible = false;
-
-    // listen for end of dialog reached
-    // eventsCenter.on('end-of-dialog-reached', this.endOfDialogReached, this);
   }
 
   update() {
     player.update();
+    isEnterPressedOnce = isKeyPressedOnce(keys.enter);
+    isEscPressedOnce = isKeyPressedOnce(keys.esc);
 
     // Press enter to open textbox
-    if (speechBubble.visible && isKeyPressedOnce(keys.enter)) {
-      // open text box if one isnt open
+    if (speechBubble.visible && isEnterPressedOnce) {
       eventsCenter.emit('show-text-box', { scene: this, currentInteractiveName, currentInteractiveType });
+      eventsCenter.emit('toggle-text-box-visibility', true);
 
       // Freeze pip during dialog
       player.body.moves = false;
     }
 
-    // Press escape to close textbox whenever
-    // probably need to make speech bubble visible again
-    if (isKeyPressedOnce(keys.esc)) {
-      eventsCenter.emit('hide-text-box', this);
-      player.body.moves = true;
+    // Press enter while text box is open to advance text
+    if (textBoxOpen && isEnterPressedOnce) {
+      eventsCenter.emit('advance-text-box', { player });
     }
+
+    // Press escape to close textbox
+    // if (isEscPressedOnce) {
+    //   eventsCenter.emit('hide-text-box', player);
+    //   textBoxOpen = false;
+    //   player.body.moves = true;
+    // }
 
     if (speechBubble.visible && !isInZone) {
       speechBubble.visible = false;
     }
     isInZone = false;
+  }
+
+  toggleTextBoxOpen(status){
+    textBoxOpen = status;
   }
 
   overlapWithInteractive(player, zone) {
