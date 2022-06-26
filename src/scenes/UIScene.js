@@ -2,9 +2,6 @@ import Phaser from 'phaser';
 import eventsCenter from '../prefabs/EventsCenter';
 import { createTextBox, getTextFromFile } from '../utils/textBox';
 
-// TODO: stats bar: mood/health, cash
-// TODO: ESC menu
-
 let textBox;
 let currentTextPosition = 0;
 let textContentList = [];
@@ -29,27 +26,25 @@ export default class UIScene extends Phaser.Scene {
       // eventsCenter.off('update-count', this.updateCount, this);
       eventsCenter.off('show-text-box', this.showTextBox, this);
       eventsCenter.off('hide-text-box', this.hideTextBox, this);
+      eventsCenter.off('advance-text-box', this.advanceTextBox, this);
     });
   }
 
   showTextBox(data) {
-    const { scene, currentInteractiveName, currentInteractiveType } = data;
+    const { scene, currentInteractiveName } = data;
     if(!textBox){
-      // Pull current text content based on currentInteractiveName
       textContentList = getTextFromFile(currentInteractiveName);
-      
-      // Create text box
       textBox = createTextBox(scene, currentInteractiveName, textContentList[0]);
     }
   }
 
   hideTextBox(player) {
     if(textBox) {
-      player.body.moves = true;
       const { textBoxBackGround, textBoxContent } = textBox;
       textBoxBackGround.destroy();
       textBoxContent.destroy();
       textBox = null;
+      player.body.moves = true;
     }
   }
 
@@ -60,6 +55,7 @@ export default class UIScene extends Phaser.Scene {
       textBoxContent.setText(textContentList[currentTextPosition]);
     }
     currentTextPosition++;
+
     // close textbox if the end of content is reached
     if(currentTextPosition > textContentList.length) {
       const { player } = data;

@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 
 // Prefabs
 import Player from '../prefabs/Player';
+import InteractiveSprite from '../prefabs/InteractiveSprite';
 import eventsCenter from '../prefabs/EventsCenter';
 
 // Utils
@@ -17,6 +18,7 @@ let currentInteractiveName;
 let currentInteractiveType;
 let isEnterPressedOnce = false;
 let isEscPressedOnce = false;
+let computer;
 
 export default class PipsHouse extends Phaser.Scene {
   constructor() {
@@ -67,10 +69,14 @@ export default class PipsHouse extends Phaser.Scene {
     // Speech Bubble: show / hide above interactive zones
     speechBubble = this.add.image(0, 0, 'speechBubble');
     speechBubble.visible = false;
+
+    // interactive sprites in scene
+    // computer = new InteractiveSprite(this, 64, 41, 'computer', false);
   }
 
   update() {
     player.update();
+    // computer.update();
     isEnterPressedOnce = isKeyPressedOnce(keys.enter);
     isEscPressedOnce = isKeyPressedOnce(keys.esc);
 
