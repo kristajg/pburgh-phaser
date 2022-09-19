@@ -2,7 +2,6 @@ import Phaser from 'phaser';
 
 // Prefabs
 import Player from '../prefabs/Player';
-import InteractiveSprite from '../prefabs/InteractiveSprite';
 import eventsCenter from '../prefabs/EventsCenter';
 
 // Utils
@@ -17,8 +16,6 @@ let textBoxOpen = false;
 let currentInteractiveName;
 let currentInteractiveType;
 let isEnterPressedOnce = false;
-let isEscPressedOnce = false;
-let computer;
 
 export default class PipsHouse extends Phaser.Scene {
   constructor() {
@@ -44,8 +41,8 @@ export default class PipsHouse extends Phaser.Scene {
     });
 
     // Tilemaps
-    const map = this.make.tilemap({ key: 'pipsHouseMap' });
-    const tileset = map.addTilesetImage('pigeonburghTileset', 'pigeonburghTiles');
+    const map = this.make.tilemap({ key: 'pipsHouseTileset' });
+    const tileset = map.addTilesetImage('pipsHouseTileset', 'pigeonburghTiles');
 
     // Below and world layers
     map.createLayer('below', tileset);
@@ -69,16 +66,11 @@ export default class PipsHouse extends Phaser.Scene {
     // Speech Bubble: show / hide above interactive zones
     speechBubble = this.add.image(0, 0, 'speechBubble');
     speechBubble.visible = false;
-
-    // interactive sprites in scene
-    // computer = new InteractiveSprite(this, 64, 41, 'computer', false);
   }
 
   update() {
     player.update();
-    // computer.update();
     isEnterPressedOnce = isKeyPressedOnce(keys.enter);
-    isEscPressedOnce = isKeyPressedOnce(keys.esc);
 
     // Press enter to open textbox
     if (speechBubble.visible && isEnterPressedOnce) {
@@ -94,20 +86,13 @@ export default class PipsHouse extends Phaser.Scene {
       eventsCenter.emit('advance-text-box', { player });
     }
 
-    // Press escape to close textbox
-    // if (isEscPressedOnce) {
-    //   eventsCenter.emit('hide-text-box', player);
-    //   textBoxOpen = false;
-    //   player.body.moves = true;
-    // }
-
     if (speechBubble.visible && !isInZone) {
       speechBubble.visible = false;
     }
     isInZone = false;
   }
 
-  toggleTextBoxOpen(status){
+  toggleTextBoxOpen(status) {
     textBoxOpen = status;
   }
 

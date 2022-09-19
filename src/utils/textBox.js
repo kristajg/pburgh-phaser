@@ -16,11 +16,14 @@ export const createTextBox = (scene, interactiveObjectName, startingText) => {
   const canvasWidth = scene.scale.width;
   const textBoxWidth = canvasWidth - 42; // Add 20 px of spacing on each side
   const textBoxHeight = 100;
-  const textBoxX = screenCenterX - 170;
-  const textBoxY = screenCenterY - (textBoxHeight / 2) + 10;
+
+  const backgroundX = screenCenterX - 5;
+  const backgroundY = screenCenterY + 70;
+  const textBoxX = backgroundX - 170;
+  const textBoxY = backgroundY - (textBoxHeight / 2) + 10;
 
   // add background & text to scene
-  const textBoxBackGround = scene.add.rectangle(screenCenterX, screenCenterY, textBoxWidth, textBoxHeight, 0x3f3f74).setStrokeStyle(1, 0xffffff);
+  const textBoxBackGround = scene.add.rectangle(backgroundX, backgroundY, textBoxWidth, textBoxHeight, 0x3f3f74).setStrokeStyle(1, 0xffffff);
   const textBoxContent = scene.add.bitmapText(textBoxX, textBoxY, 'arial', startingText, 16).setMaxWidth(340);
   const textBox = {
     textBoxBackGround,

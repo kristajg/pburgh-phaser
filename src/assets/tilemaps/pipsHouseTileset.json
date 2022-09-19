@@ -3,7 +3,16 @@
  "infinite":false,
  "layers":[
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 55, 55, 55, 55, 43, 0, 0, 0, 0, 33, 55, 55, 55, 55, 43, 0, 0, 0, 0, 33, 55, 55, 55, 55, 35, 0, 0, 0, 0, 33, 55, 55, 55, 55, 35, 0, 0, 0, 0, 33, 34, 34, 34, 34, 35, 0, 0, 0, 0, 33, 34, 34, 34, 34, 35, 0, 0, 0, 0, 41, 42, 42, 42, 42, 43, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 41, 42, 42, 42, 42, 42, 43, 0,
+            0, 0, 49, 50, 50, 50, 50, 50, 51, 0,
+            0, 0, 49, 50, 50, 50, 50, 50, 51, 0,
+            0, 0, 49, 50, 50, 50, 50, 50, 51, 0,
+            0, 0, 49, 50, 50, 50, 50, 50, 51, 0,
+            0, 0, 57, 58, 58, 58, 58, 58, 59, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":10,
          "id":1,
          "name":"below",
@@ -15,9 +24,18 @@
          "y":0
         }, 
         {
-         "data":[36, 1, 1, 1, 1, 1, 1, 37, 0, 0, 44, 9, 10, 9, 9, 10, 9, 45, 0, 0, 44, 17, 18, 17, 17, 18, 17, 45, 0, 0, 44, 0, 0, 29, 30, 0, 50, 45, 0, 0, 44, 0, 0, 0, 0, 0, 0, 45, 0, 0, 44, 0, 0, 0, 0, 0, 0, 45, 0, 0, 44, 0, 0, 0, 0, 0, 0, 45, 0, 0, 44, 0, 0, 0, 0, 0, 0, 45, 0, 0, 44, 0, 0, 0, 0, 0, 0, 45, 0, 0, 52, 0, 0, 0, 0, 0, 0, 53, 0, 0],
+         "data":[0, 38, 44, 45, 44, 44, 44, 45, 44, 39,
+            0, 46, 52, 53, 52, 52, 52, 53, 52, 47,
+            0, 46, 60, 61, 60, 60, 60, 61, 60, 47,
+            0, 46, 17, 18, 19, 0, 0, 0, 48, 47,
+            0, 46, 0, 0, 0, 0, 0, 0, 0, 47,
+            0, 46, 0, 0, 0, 0, 0, 0, 0, 47,
+            0, 46, 0, 0, 0, 0, 0, 33, 34, 47,
+            0, 46, 0, 0, 0, 0, 0, 0, 0, 47,
+            0, 62, 0, 0, 0, 0, 0, 0, 0, 63,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":10,
-         "id":2,
+         "id":3,
          "name":"worldLayer",
          "opacity":1,
          "type":"tilelayer",
@@ -32,9 +50,10 @@
          "name":"gameObjects",
          "objects":[
                 {
-                 "height":8,
-                 "id":4,
-                 "name":"computer",
+                 "class":"",
+                 "height":10.0625,
+                 "id":6,
+                 "name":"fridge",
                  "properties":[
                         {
                          "name":"interactive",
@@ -42,15 +61,15 @@
                          "value":true
                         }],
                  "rotation":0,
-                 "type":"item",
                  "visible":true,
-                 "width":16,
-                 "x":47.82,
-                 "y":48.18
+                 "width":15.5625,
+                 "x":64.40625,
+                 "y":47.03125
                 }, 
                 {
-                 "height":8,
-                 "id":5,
+                 "class":"",
+                 "height":27.6988636363636,
+                 "id":7,
                  "name":"bed",
                  "properties":[
                         {
@@ -59,16 +78,33 @@
                          "value":true
                         }],
                  "rotation":0,
-                 "type":"item",
                  "visible":true,
-                 "width":10,
-                 "x":102.36,
-                 "y":64.45
+                 "width":15.5625,
+                 "x":126.21875,
+                 "y":36.2414772727273
                 }, 
                 {
-                 "height":12,
-                 "id":6,
-                 "name":"",
+                 "class":"",
+                 "height":12.6989,
+                 "id":8,
+                 "name":"computer",
+                 "properties":[
+                        {
+                         "name":"interactive",
+                         "type":"bool",
+                         "value":true
+                        }],
+                 "rotation":0,
+                 "visible":true,
+                 "width":15.5625,
+                 "x":112.127840909091,
+                 "y":93.2414590909091
+                }, 
+                {
+                 "class":"",
+                 "height":10.0625,
+                 "id":9,
+                 "name":"door",
                  "properties":[
                         {
                          "name":"changeSceneTo",
@@ -81,11 +117,10 @@
                          "value":false
                         }],
                  "rotation":0,
-                 "type":"",
                  "visible":true,
-                 "width":16,
-                 "x":64,
-                 "y":147.82
+                 "width":15.5625,
+                 "x":48.21875,
+                 "y":134.241477272727
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -94,9 +129,18 @@
          "y":0
         }, 
         {
-         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21, 22, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 49, 1, 1, 0, 0, 0, 0, 9, 9, 9, 57, 9, 9, 0, 0, 0],
+         "data":[0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 9, 10, 11, 0, 0, 0, 40, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 25, 26, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 44, 56, 44, 44, 44, 44, 44, 0,
+            0, 0, 52, 64, 52, 52, 52, 52, 52, 0,
+            0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
          "height":10,
-         "id":3,
+         "id":2,
          "name":"above",
          "opacity":1,
          "type":"tilelayer",
@@ -106,20 +150,20 @@
          "y":0
         }],
  "nextlayerid":5,
- "nextobjectid":7,
+ "nextobjectid":10,
  "orientation":"orthogonal",
  "renderorder":"right-down",
- "tiledversion":"1.8.2",
+ "tiledversion":"1.9.0",
  "tileheight":16,
  "tilesets":[
         {
          "columns":8,
          "firstgid":1,
-         "image":"pigeonburghTileset1.png",
+         "image":"pipsHouseTileset.png",
          "imageheight":128,
          "imagewidth":128,
          "margin":0,
-         "name":"pigeonburghTileset",
+         "name":"pipsHouseTileset",
          "spacing":0,
          "tilecount":64,
          "tileheight":16,
@@ -188,6 +232,15 @@
                         }]
                 }, 
                 {
+                 "id":7,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":8,
                  "properties":[
                         {
@@ -204,14 +257,15 @@
                          "type":"bool",
                          "value":true
                         }]
-                }, 
+                },
+            
                 {
                  "id":10,
                  "properties":[
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -251,12 +305,21 @@
                         }]
                 }, 
                 {
+                 "id":15,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
                  "id":16,
                  "properties":[
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
@@ -265,7 +328,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
@@ -285,14 +348,15 @@
                          "type":"bool",
                          "value":false
                         }]
-                }, 
+                },
+            
                 {
                  "id":20,
                  "properties":[
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
@@ -301,11 +365,20 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
                  "id":22,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":23,
                  "properties":[
                         {
                          "name":"collides",
@@ -319,7 +392,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -328,7 +401,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -366,9 +439,19 @@
                          "type":"bool",
                          "value":false
                         }]
-                }, 
+                },
+            
                 {
                  "id":30,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":false
+                        }]
+                }, 
+                {
+                 "id":31,
                  "properties":[
                         {
                          "name":"collides",
@@ -440,6 +523,16 @@
                         }]
                 }, 
                 {
+                 "id":39,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                },
+            
+                {
                  "id":40,
                  "properties":[
                         {
@@ -472,7 +565,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
@@ -481,7 +574,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
@@ -490,7 +583,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -499,7 +592,16 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":47,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
                         }]
                 }, 
                 {
@@ -517,16 +619,17 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
-                }, 
+                },
+            
                 {
                  "id":50,
                  "properties":[
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
@@ -553,11 +656,20 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
                  "id":54,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":55,
                  "properties":[
                         {
                          "name":"collides",
@@ -600,7 +712,8 @@
                          "type":"bool",
                          "value":true
                         }]
-                }, 
+                },
+            
                 {
                  "id":60,
                  "properties":[
@@ -616,11 +729,20 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
                  "id":62,
+                 "properties":[
+                        {
+                         "name":"collides",
+                         "type":"bool",
+                         "value":true
+                        }]
+                }, 
+                {
+                 "id":63,
                  "properties":[
                         {
                          "name":"collides",
@@ -632,6 +754,6 @@
         }],
  "tilewidth":16,
  "type":"map",
- "version":"1.8",
+ "version":"1.9",
  "width":10
 }

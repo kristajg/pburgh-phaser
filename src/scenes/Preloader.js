@@ -10,9 +10,10 @@ import computer from '../assets/sprites/computer.png';
 
 // Tiles & Tilemaps
 import tiles from '../assets/tilemaps/dungeonTileset.png';
-import pigeonburghTiles from '../assets/tilemaps/pigeonburghTileset1.png';
+import pigeonburghTiles from '../assets/tilemaps/pipsHouseTileset.png';
+
 import myDungeon from '../assets/tilemaps/myDungeon.json';
-import pipsHouseMap from '../assets/tilemaps/pipsHouseMap.json';
+import pipsHouseTileset from '../assets/tilemaps/pipsHouseTileset.json';
 
 // Textbot assets
 import arialFontPng from '../assets/fonts/arial/Arial16.png';
@@ -38,7 +39,7 @@ export default class Preloader extends Phaser.Scene {
     this.load.image('tiles', tiles);
     this.load.image('pigeonburghTiles', pigeonburghTiles);
     this.load.tilemapTiledJSON('myDungeon', myDungeon);
-    this.load.tilemapTiledJSON('pipsHouseMap', pipsHouseMap);
+    this.load.tilemapTiledJSON('pipsHouseTileset', pipsHouseTileset);
 
     // Textbox
     this.load.bitmapFont('arial', arialFontPng, arialFontXml);
