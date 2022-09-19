@@ -1,4 +1,3 @@
-import Phaser from 'phaser';
 import newStory from '../assets/text/newStory.json';
 
 export const getTextFromFile = interactiveObjectName => {

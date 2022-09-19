@@ -4,9 +4,9 @@
     {
       "interactiveName": "computer",
 			"content": [
-				"It's your computer. With the nets and video games.",
-				"No time to play Nest of Birdcraft, you gotta check your work schedule. Boss always posts it last minute.",
-				"And as the star employee of Crouton Italiano (and chief billpayer of your own life) you gotta be on time!"
+				"It's your computer.",
+				"Hey - no time to play Nest of Birdcraft!",
+        "Check your work schedule. Boss always posts it online last minute."
 			]
     },
     {
@@ -14,6 +14,12 @@
       "content": [
         "Bro, you just woke up. Save those ZZZ's for night time.",
         "Night owls don't make it to the morning shift on time."
+      ]
+    },
+    {
+      "interactiveName": "fridge",
+      "content": [
+        "Corn chips?"
       ]
     }
   ]
