@@ -51,7 +51,7 @@
          "objects":[
                 {
                  "class":"",
-                 "height":10.0625,
+                 "height":17.3352272727273,
                  "id":6,
                  "name":"fridge",
                  "properties":[
@@ -64,7 +64,7 @@
                  "visible":true,
                  "width":15.5625,
                  "x":64.40625,
-                 "y":47.03125
+                 "y":39.7585227272727
                 }, 
                 {
                  "class":"",
@@ -85,7 +85,7 @@
                 }, 
                 {
                  "class":"",
-                 "height":12.6989,
+                 "height":19.6079909090909,
                  "id":8,
                  "name":"computer",
                  "properties":[
@@ -98,11 +98,11 @@
                  "visible":true,
                  "width":15.5625,
                  "x":112.127840909091,
-                 "y":93.2414590909091
+                 "y":86.3323681818182
                 }, 
                 {
                  "class":"",
-                 "height":10.0625,
+                 "height":20.9715909090909,
                  "id":9,
                  "name":"door",
                  "properties":[
@@ -120,7 +120,7 @@
                  "visible":true,
                  "width":15.5625,
                  "x":48.21875,
-                 "y":134.241477272727
+                 "y":123.332386363636
                 }],
          "opacity":1,
          "type":"objectgroup",

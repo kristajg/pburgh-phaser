@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import eventsCenter from '../prefabs/EventsCenter';
+// import eventsCenter from '../prefabs/EventsCenter';
 
 export default class GameScene extends Phaser.Scene {
   constructor() {

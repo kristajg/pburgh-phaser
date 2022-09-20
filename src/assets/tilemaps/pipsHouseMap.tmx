@@ -355,7 +355,7 @@
 </data>
  </layer>
  <objectgroup id="4" name="gameObjects">
-  <object id="6" name="fridge" x="64.4063" y="47.0313" width="15.5625" height="10.0625">
+  <object id="6" name="fridge" x="64.4063" y="39.7585" width="15.5625" height="17.3352">
    <properties>
     <property name="interactive" type="bool" value="true"/>
    </properties>
@@ -365,12 +365,12 @@
     <property name="interactive" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="8" name="computer" x="112.128" y="93.2415" width="15.5625" height="12.6989">
+  <object id="8" name="computer" x="112.128" y="86.3324" width="15.5625" height="19.608">
    <properties>
     <property name="interactive" type="bool" value="true"/>
    </properties>
   </object>
-  <object id="9" name="door" x="48.2188" y="134.241" width="15.5625" height="10.0625">
+  <object id="9" name="door" x="48.2188" y="123.332" width="15.5625" height="20.9716">
    <properties>
     <property name="changeSceneTo" value="Neighborhood"/>
     <property name="interactive" type="bool" value="false"/>

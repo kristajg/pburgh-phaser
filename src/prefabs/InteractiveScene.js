@@ -5,11 +5,6 @@ import eventsCenter from '../prefabs/EventsCenter';
 
 // Utils
 import { isKeyPressedOnce } from '../utils/input';
-import { createTextBox } from '../utils/textBox';
-
-// let keys;
-// let speechBubble;
-// let textBoxOpen = false;
 
 export default class InteractiveScene extends Phaser.Scene {
   constructor () {

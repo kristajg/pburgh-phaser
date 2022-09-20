@@ -31,7 +31,7 @@ export default class PipsHouse extends Phaser.Scene {
     // clean up listeners on scene shut down
     this.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
       eventsCenter.off('toggle-text-box-visibility', this.toggleTextBoxOpen, this);
-    })
+    });
 
     // Initialize keys
     const { ENTER, ESC } = Phaser.Input.Keyboard.KeyCodes;
@@ -50,7 +50,7 @@ export default class PipsHouse extends Phaser.Scene {
     worldLayer.setCollisionByProperty({ collides: true });
 
     // Player
-    player = new Player(this, 100, 120, 'pigeon');
+    player = new Player(this, 75, 75, 'pigeon');
     this.physics.add.collider(player, worldLayer);
     this.cameras.main.startFollow(player, true);
 
@@ -83,7 +83,7 @@ export default class PipsHouse extends Phaser.Scene {
 
     // Press enter while text box is open to advance text
     if (textBoxOpen && isEnterPressedOnce) {
-      eventsCenter.emit('advance-text-box', { player });
+      eventsCenter.emit('advance-text-box', { scene: this, player });
     }
 
     if (speechBubble.visible && !isInZone) {
