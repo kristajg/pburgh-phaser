@@ -16,7 +16,6 @@ let textBoxOpen = false;
 let currentInteractiveName;
 let currentInteractiveType;
 let isEnterPressedOnce = false;
-let isEscPressedOnce = false;
 
 export default class PipsHouse extends Phaser.Scene {
   constructor() {
@@ -32,7 +31,7 @@ export default class PipsHouse extends Phaser.Scene {
     // clean up listeners on scene shut down
     this.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
       eventsCenter.off('toggle-text-box-visibility', this.toggleTextBoxOpen, this);
-    })
+    });
 
     // Initialize keys
     const { ENTER, ESC } = Phaser.Input.Keyboard.KeyCodes;
@@ -42,8 +41,8 @@ export default class PipsHouse extends Phaser.Scene {
     });
 
     // Tilemaps
-    const map = this.make.tilemap({ key: 'pipsHouseMap' });
-    const tileset = map.addTilesetImage('pigeonburghTileset', 'pigeonburghTiles');
+    const map = this.make.tilemap({ key: 'pipsHouseTileset' });
+    const tileset = map.addTilesetImage('pipsHouseTileset', 'pigeonburghTiles');
 
     // Below and world layers
     map.createLayer('below', tileset);
@@ -51,7 +50,7 @@ export default class PipsHouse extends Phaser.Scene {
     worldLayer.setCollisionByProperty({ collides: true });
 
     // Player
-    player = new Player(this, 100, 120, 'pigeon');
+    player = new Player(this, 75, 75, 'pigeon');
     this.physics.add.collider(player, worldLayer);
     this.cameras.main.startFollow(player, true);
 
@@ -72,7 +71,6 @@ export default class PipsHouse extends Phaser.Scene {
   update() {
     player.update();
     isEnterPressedOnce = isKeyPressedOnce(keys.enter);
-    isEscPressedOnce = isKeyPressedOnce(keys.esc);
 
     // Press enter to open textbox
     if (speechBubble.visible && isEnterPressedOnce) {
@@ -85,15 +83,8 @@ export default class PipsHouse extends Phaser.Scene {
 
     // Press enter while text box is open to advance text
     if (textBoxOpen && isEnterPressedOnce) {
-      eventsCenter.emit('advance-text-box', { player });
+      eventsCenter.emit('advance-text-box', { scene: this, player });
     }
-
-    // Press escape to close textbox
-    // if (isEscPressedOnce) {
-    //   eventsCenter.emit('hide-text-box', player);
-    //   textBoxOpen = false;
-    //   player.body.moves = true;
-    // }
 
     if (speechBubble.visible && !isInZone) {
       speechBubble.visible = false;
@@ -101,7 +92,7 @@ export default class PipsHouse extends Phaser.Scene {
     isInZone = false;
   }
 
-  toggleTextBoxOpen(status){
+  toggleTextBoxOpen(status) {
     textBoxOpen = status;
   }
 

@@ -1,13 +1,11 @@
 import Phaser from 'phaser';
 import eventsCenter from '../prefabs/EventsCenter';
-import { createTextBox, getTextFromFile } from '../utils/textBox';
-
-// TODO: stats bar: mood/health, cash
-// TODO: ESC menu
+import { createTextBox, createTextContentList, createSelectionOptions } from '../utils/textBox';
 
 let textBox;
-let currentTextPosition = 0;
+let currentTextIndex = 0;
 let textContentList = [];
+let textSelectionOptions = [];
 
 export default class UIScene extends Phaser.Scene {
   constructor() {
@@ -29,44 +27,66 @@ export default class UIScene extends Phaser.Scene {
       // eventsCenter.off('update-count', this.updateCount, this);
       eventsCenter.off('show-text-box', this.showTextBox, this);
       eventsCenter.off('hide-text-box', this.hideTextBox, this);
+      eventsCenter.off('advance-text-box', this.advanceTextBox, this);
     });
   }
 
   showTextBox(data) {
-    const { scene, currentInteractiveName, currentInteractiveType } = data;
+    const { scene, currentInteractiveName } = data;
     if(!textBox){
-      // Pull current text content based on currentInteractiveName
-      textContentList = getTextFromFile(currentInteractiveName);
-      
-      // Create text box
-      textBox = createTextBox(scene, currentInteractiveName, textContentList[0]);
+      textContentList = createTextContentList(currentInteractiveName);
+      textBox = createTextBox(scene, textContentList[0]);
     }
   }
 
   hideTextBox(player) {
     if(textBox) {
-      player.body.moves = true;
       const { textBoxBackGround, textBoxContent } = textBox;
       textBoxBackGround.destroy();
       textBoxContent.destroy();
       textBox = null;
+      player.body.moves = true;
     }
   }
 
   advanceTextBox(data) {
-    if(currentTextPosition !== 0){
+    const { scene, player } = data;
+
+    if(currentTextIndex !== 0){
       const { textBoxContent } = textBox;
-      // advance textContent to the next item in the array
-      textBoxContent.setText(textContentList[currentTextPosition]);
+      const isSelectionObject = typeof textContentList[currentTextIndex] === 'object';
+      if (isSelectionObject) {
+        // Set main text as the selection prompt
+        textBoxContent.setText(textContentList[currentTextIndex].mainText);
+
+        // add selections to the textbox
+        textSelectionOptions = createSelectionOptions(scene, textContentList[currentTextIndex].options);
+      } else {
+        // advance textContent to the next item in the array
+        textBoxContent.setText(textContentList[currentTextIndex]);
+      }
     }
-    currentTextPosition++;
+    currentTextIndex++;
+
     // close textbox if the end of content is reached
-    if(currentTextPosition > textContentList.length) {
-      const { player } = data;
+    if(currentTextIndex > textContentList.length) {
       eventsCenter.emit('hide-text-box', player);
       eventsCenter.emit('toggle-text-box-visibility', false);
-      currentTextPosition = 0;
+      currentTextIndex = 0;
     }
+  }
+
+  // closeTextBox(data) {
+  //   const { player } = data;
+  //   eventsCenter.emit('hide-text-box', player);
+  //   eventsCenter.emit('toggle-text-box-visibility', false);
+  //   currentTextIndex = 0;
+  // }
+
+  selectDialogOption(options) {
+    // Handles up, down, enter
+    console.log('select dialog option fired ', options);
+    // update localStorage with selection
   }
 
   // updateCount(count) {

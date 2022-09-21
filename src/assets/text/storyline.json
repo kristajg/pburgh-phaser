@@ -1,10 +1,9 @@
 {
 	"version": "1.0.0",
-  "storyline": [
-    {
-      "id": 1,
-      "day": 1,
-      "scene": "PipsHouse",
+	"steps": [
+		{
+			"id": 1,
+			"description": "Game entry point. Introduces Pip and indicates city location. Corn chip choices.",
 			"content": [
 				"You are a <span class=\"substep\" data-substep=\"1\">pigeon</span> named Pip in your prime. How coo is that? You reckon it's pretty coo.",
 				"Yaaaaaaawn. What a beautiful day in the neighborhood.",
@@ -31,9 +30,1101 @@
 					"addInventoryItems": []
 				}
 			]
-    },
-    {
-      
-    }
-  ]
+		},
+		{
+			"id": 2,
+			"description": "Classic corn chip for breakfast",
+			"content": [
+				"Delicious chip carbs fill your feather bod. Your energy goes up by 10. Hmmm... 10 what exactly?",
+				"You're not sure, but 10 feels like the right number unit.",
+				"Time to fly around this town like no one's business."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "Fly east with 10x energy",
+					"nextStepId": 4,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 3,
+			"description": "Coffee over corn chips",
+			"content": [
+				"Too good for a carb heavy breakfast, eh? Just a coffee-and-go kind of bird.",
+				"You fly to the nearest cafe and take a <span class=\"substep\" data-substep=\"1\">BIG SIP</span> from a half-full mug left on a patio table.",
+				"Full on caffeinated, you fly like a bird out of hell in several circles because you feel ALIVE",
+				"Let's put this perpetual birdmotion machine to work!"
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "SIIIIIIIP. The lukewarm bev flows through you. It's your perfect ratio of coffee to cream. Now you are ready for action."
+				}
+			],
+			"choices": [
+				{
+					"text": "FLY EAST WITH INTENT",
+					"nextStepId": 4,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 4,
+			"description": "You found the skate punk cats...",
+			"content": [
+				"You fly in an eastern fashion towards the river bank.",
+				"A group of cat <span class=\"substep\" data-substep=\"1\">crust punks</span> sit atop a big chunk of cement under a bridge, smoking cigarettes.",
+				"You overhear them waxing poetic on grindcore and anarchy. You don't know much about heavy metal subgenres or anti-authority and inch closer.",
+				"One cat steps forward. He noticed you casting a blank un-hip stare at his local band tee and CHALLENGES you to a skate off!",
+				"To skate or not to skate...that is literally the question he asks you."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Cooler than you. Wearing t-shirts featuring bands you’ve never heard of: Death by Plastic Monstertruck, Puddleslap, Figboy and the Newtons."
+				}
+			],
+			"choices": [
+				{
+					"text": "shred that gnar",
+					"nextStepId": 5,
+					"addInventoryItems": []
+				},
+				{
+					"text": "ask if he's seen any good movies lately",
+					"nextStepId": 6,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 5,
+			"description": "Pick your skate option to race Carl!",
+			"content": [
+				"The cat sneers as he grooms his ear and flicks the end of a cigarette at you, but graciously allows you to pick your method of shreddin'.",
+				"...everything cats do is adorable no matter how hardcore they try to be.",
+				"His sk8ter boy arsenal reveals three choices of handlebar-less transportation:"
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "the ripped denim tradition of a regular skateboard",
+					"nextStepId": 7,
+					"addInventoryItems": []
+				},
+				{
+					"text": "the big sur longboard cruiser",
+					"nextStepId": 8,
+					"addInventoryItems": []
+				},
+				{
+					"text": "the alternative boot-glide of rollerblades",
+					"nextStepId": 9,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 6,
+			"description": "No skating, just chat with Carl. He gives you binary code paper",
+			"content": [
+				"You befriend the cat and learn his name is Carl.",
+				"You learn Carl enjoys painting water colors of 1980's action film scenes. After a pleasant conversation involving comparisons of your best <span class=\"substep\" data-substep=\"1\">Terminator impressions</span>, you bid farewell to your new friend.",
+				"Before you leave, Carl slips you a piece of paper with some faded binary code on it, featuring a weird ink stamp at the bottom. with a strange ink stamp at the bottom. The stamp looks like a company logo with the stylized letters: MG.",
+				"He says, \"Pip, you're a true Maverick. I'm sure we'll see each other again soon.\"",
+				"He seems like a sensitive soul.",
+				"You say \"Thanks... Goose,\" and accept the slip paper since it would be rude not to."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Classic movie lines like: \"I'll be back\" and \"Chill out, dickwad.\""
+				}
+			],
+			"choices": [
+				{
+					"text": "Fly home, Top Gun style",
+					"nextStepId": 10,
+					"addInventoryItems": [4]
+				}
+			]
+		},
+		{
+			"id": 7,
+			"description": "Win the race with a skateboard! Get a binary code paper!",
+			"content": [
+				"Ah, yes. The traditional skateboard.",
+				"You'd wear a Thrasher t-shirt, but they don't come in tiny bird sizes.",
+				"You skate with the valience of ten thousand Greek <span class=\"substep\" data-substep=\"1\">war chariots</span> and so does the crust punk, but ultimately you best him.",
+				"You do a kickflip to rub victory in his face, and he sadly offers you a slip of paper as a reward.",
+				"The cat says, \"Hey man, you won. My name is Carl and I respect your victory. Hope to see you around town.\"",
+				"That kickflip was sick, but unnecessary. Carl seems like a sensitive soul.",
+				"The paper has a cryptic series of binary code on it, with a strange ink stamp at the bottom. Looks like a company logo with the stylized letters: MG. Cryptic, but not encrypted... huh."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Are Greek chariots used for anything other than vehicles of war or half-gods driving into the sun to set the earth on fire? General transportation perhaps?"
+				}
+			],
+			"choices": [
+				{
+					"text": "Fly home with your spoils",
+					"nextStepId": 10,
+					"addInventoryItems": [1, 4]
+				}
+			]
+		},
+		{
+			"id": 8,
+			"description": "Lost the race with a longboard. Get a binary code anyways!",
+			"content": [
+				"Like your father before you, you are a true Cali brah in your salty pigeon heart.",
+				"With the grace of a 120 year old sea turtle you carve slow S's down the hill. In that moment you swear you are infinite - since it certainly takes you long enough to complete the race.",
+				"The crust punk easily beats you speed wise, but is moved to tears by your beautious display. He slips you a non-slippery slip of paper as a reward.",
+				"He says, \"Hey man, you won. My name is Carl and I respect your victory. Hope to see you around town.\"",
+				"He seems like a sensitive soul. You notice the paper is covered in strange binary code with a uniquely designed ink stamp at the bottom with a strange ink stamp at the bottom. Looks like a company logo with the stylized letters: MG."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "Fly home slow & steady, brah",
+					"nextStepId": 10,
+					"addInventoryItems": [2, 4]
+				}
+			]
+		},
+		{
+			"id": 9,
+			"description": "Win the race with sweet blades brah!",
+			"content": [
+				"With your tiny foot chariots, you blaze down the hill like hell and think to yourself: this feels like flying!",
+				"Cross-checking with your memories of actual flight, it is pretty similar.",
+				"It's a tie down to the milisecond. You're not sure why this crust punk went through all the trouble of setting up professional-level tech for a street match but you feel cool as a participant.",
+				"He hands you a slip of paper and says \"Excellent match, you've earned this. My name's Carl and I respect your carve. Brink was a really underrated Disney made-for-tv movie.\" and seems to genuinely mean it. A sensitive soul he is.",
+				"The paper is covered in a mysterious series of binary code with a strange ink stamp at the bottom. Looks like a company logo with the stylized letters: MG."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "Actually fly home",
+					"nextStepId": 10,
+					"addInventoryItems": [3, 4]
+				}
+			]
+		},
+		{
+			"id": 10,
+			"description": "Get home after your first day out & about",
+			"content": [
+				"You arrive home and sigh deeply.",
+				"You hop in your feather down bed and try to sleep, but that “take me home country roads” song is stuck in your head for no reason.",
+				"Musical stylings of John Denver aside, you play through the day's events in your mind and pause to consider that mysterious binary code.",
+				"A weird piece of paper is a weird prize.",
+				"And have you seen that stamp design somewhere before...?",
+				"That logo looks familiar and stirs up something in the recesses of your brain bank. The stylized logo featuring 'MG' get mixed around in your memory, like alphabet soup with only two letters."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "Sleep comes eventually, Mountain Mama",
+					"nextStepId": 11,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 11,
+			"description": "Day 2 begins - you eat a corn chip & gotta decide where to go",
+			"content": [
+				"Another day, another corn chip.",
+				"Famished, you eat the chip. It is so delicious you want to start a relationchip with it.",
+				"Or rather, you want someone to share in this chip fortune with you in a real relationship kind of way. You could made chip puns together.",
+				"Yeah.",
+				"That would be nice.",
+				"Your reverie is interrupted by thoughts of the mysterious paper acquired yesterday. You figure there's a few places that may provide a bit more insight.."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "Go to the Cathedral of Books",
+					"nextStepId": 12,
+					"addInventoryItems": []
+				},
+				{
+					"hide": true,
+					"text": "Go to the Supercomputing Center",
+					"nextStepId": 13,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 12,
+			"description": "you picked cathedral of books & run into Ira there.",
+			"content": [
+				"As a bird with a hungry mind (and body), you live close to the Cathedral of Books.",
+				"You enter the tall tower of tutelage and head to a floor full of empty classrooms.",
+				"You spot a possum friend named <span class=\"substep\" data-substep=\"1\">Ira</span> from art electives back at University, reading in a corner.",
+				"Her book is titled \"How to Get Your Life Together.\"",
+				"Whoa. Is she like, ok?",
+				"You walk over to say hello.",
+				"After initial pleasantries you gently inquire about the self-help book. She sighs often and you notice dark circles under her eyes that have nothing to do with post-grunge eyeliner.",
+				"Ira confesses she's mega bummed since her <span class=\"substep\" data-substep=\"2\">agency job</span> isn't what she imagined and it's draining her of creativity and personal-life energy points."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Ira is cool for sure. She had the best jokes in illustration studio. During nude drawing sessions, she called it the Art Nude-io."
+				},
+				{
+					"id": 2,
+					"text": "An award-winning firm that designs for upscale restaurants. Her hipster coworkers are cheese mongers on the side, and love to pair the fartiest cheeses with the craftiest of craft brews."
+				}
+			],
+			"choices": [
+				{
+					"text": "Listen quietly",
+					"nextStepId": 14,
+					"addInventoryItems": []
+				},
+				{
+					"text": "Share a relatable story",
+					"nextStepId": 15,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 13,
+			"description": "You picked supercomputing center, but are distracted by restaurant choices - deli or hipster bistro?",
+			"content": [
+				"Ah the Supercomputing Center. A center for all things super and computing. This binary code probably relates to these things, so you head on over.",
+				"On the way, you're distracted by the fanfare of a new restaurant opening up on the Northside next to the <span class=\"substep\" data-substep=\"1\">old deli</span.",
+				"However the new restaurant looks pretty swanky. A man dressed in suave hipster attire heralds people towards the entrance. Is he really waving his Premiumley Waxed beard at people? Is he offering free kombucha? Is that...a bowl of artisan corn chips???",
+				"Even though you ate a chip just fifteen minutes ago, you are tempted by more substantial sustinance..."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "That old deli rules. They put banana peppers on every sandwich. The old Deli Man there called customers either Dorothy or Donnie - no other options it seemed."
+				}
+			],
+			"choices": [
+				{
+					"text": "Grab a traditional deli sando",
+					"nextStepId": 16,
+					"addInventoryItems": []
+				},
+				{
+					"text": "Embrace change & try out the new restaurant",
+					"nextStepId": 17,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 14,
+			"description": "Listen sincerely to Iras predicament then show her binary code paper",
+			"content": [
+				"You listen sincerely to Ira's tale of agency churn & burn, spending long hours toiling for peanuts.",
+				"(Wait, does she actually get paid in peanuts...?? Delicious.)",
+				"It makes you a bit sad in your core.",
+				"Maybe everyone has to put in those hell-grindy hours before bustin' out like a caterpillar turning into a <span class=\"substep\" data-substep=\"1\">butterfly</span>.",
+				"You say, \"Ira, that super sucks. You are a cool person with the righteousness and know-how to destroy a small-to-medium sized planet. Destroy it with the power of your art!\"",
+				"She smiles and says, \"Thanks Pip, that means a lot. Why are you in this musty book tower anyways?\""
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "A metal butterfly destroying it’s Slayer chrysalis with double-bass drums in the background."
+				}
+			],
+			"choices": [
+				{
+					"text": "Tell her about the binary code",
+					"nextStepId": 19,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 15,
+			"description": "You shared a relatable story to Ira & kinda made it about you then show her the binary code",
+			"content": [
+				"You tell Ira a relatable story hoping to put her at ease to know the pain is shareable.",
+				"You can’t stop sharing tales of your own cubicle woes. Oh no, what are you doing?",
+				"The walls of your own sharing enclose around you like the walls of your old cubicle. A beige trap made of felt and some crappy metal. You picture <span class=\"substep\" data-substep=\"1\">Tracey</span> your old coworker peeping over the wall at you.",
+				"Finally, you look up and yell “Ira! Work is dumb but you aren’t. I have major respect for your art and your drive, girl. You can do this.”",
+				"Ira looks at you for a solid 4 seconds before laughing and says “You’re a weird bird Pip, but I can dig it. Sounds like we had the same cubicle. And same Tracey. What are you doing around the Cathedral anyways?”"
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Flashback to Tracey! DANG IT she doesn’t even know how to use spreadsheets don’t MESS WITH ME TRACEY I SWEAR."
+				}
+			],
+			"choices": [
+				{
+					"text": "Sheepishly continue to share, this time about the binary code paper",
+					"nextStepId": 19,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 16,
+			"description": "You picked classic deli & recieve a delicious sando",
+			"content": [
+				"The deli door rings mellifluously. It triggers a Pavlovian reaction, and all you can think of is an italian sandwich on Mancini's bread. Extra banana peppers.",
+				"The Deli Man says, \"Hey there Donnie, what'll it be?\" and you inform him of your sandwich desires.",
+				"You acquire the best looking sandwich this world has yet known. And it is all yours."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "eat that sandwich. right. NOW",
+					"nextStepId": 18,
+					"addInventoryItems": []
+				},
+				{
+					"text": "pack that pristine bread & meat stack for secret eating at a later time",
+					"nextStepId": 26,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 17,
+			"description": "You picked hipster deli & waited a long time for food. Gotta pick from 2 boujee food options",
+			"content": [
+				"You swoop down and sample an artisan corn chip. It has hints of rosemary, garlic, and nostalgia for a rustic time you were never a part of but it's nice to think so.",
+				"You are told there will be a 30 to 45 minute wait by the chic looking hostess and you comply without thought. This will be worth it.",
+				"Finally, blissfully, you are seated and get ready to order..."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "bread, olive, and cheese board",
+					"nextStepId": 21,
+					"addInventoryItems": []
+				},
+				{
+					"text": "fancy breakfast for dinner",
+					"nextStepId": 22,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 18,
+			"description": "You chose to eat the deli sando right NOW",
+			"content": [
+				"No time like the present! You're so hungry you could eat a cliche. Instead, you consume the sandwich with the ferocity of a shark showing off for the shark week camera crew.",
+				"",
+				"TODO: finish this step"
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "TODO: choice time",
+					"nextStepId": 19,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 19,
+			"description": "Ira cracks the binary code for you, no problem atall. Head to the rum warehouse",
+			"content": [
+				"You recount the crust punk happenings and show Ira the curious piece of paper.",
+				"Ira takes the paper in her prehensile possum tail & studies it for a hot minute. “Hmm. Doesn’t say much other than <i>rum warehouse</i>,” she says thoughtfully.",
+				"On top of being a badass artist, apparently Ira is fluent in binary code. <span class=\"substep\" data-substep=\"1\">Dang</span>.",
+				"You thank Ira for having such a cool brain and head out."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Hold up. Fluent in binary code? Maybe you'll ask her to hang sometime to see what other stuff is going on in her steel trap of a brain. But she’s probably too cool and connected and maybe you’ll ask later and anyways you’re super busy solving this weird puzzle and and and and and AND"
+				}
+			],
+			"choices": [
+				{
+					"text": "Now, ware is that warehouse?",
+					"nextStepId": 20,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 20,
+			"description": "Flying to & finding the rum emporium",
+			"content": [
+				"The Rum Warehouse is a blue cinder block building by a bridge and train tracks.",
+				"You fly in random circles until you see it and swoop in, tucking your wings close to your bod while making dramatic divebomb sound effects.",
+				"You land theatrically and hope no passersby heard your embarassing beak-sounds, then do a dainty pirouette to face the building.",
+				"You remember reading a local news article about this place.",
+				"Apparently, the warehouse owner is also the lead distiller. A <span class=\"substep\" data-substep=\"1\">private type</span> with a steely gaze and quiet disposition.",
+				"Word around town is he walked out on a cushy corporate job after a particularly soul-sucking meeting, and never looked back."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "He thinks social media is a suck-up suckfest and keeps to himself. Unsurprisngly, he doesn't prefer authority figures."
+				}
+			],
+			"choices": [
+				{
+					"text": "Enter the rum emporium",
+					"nextStepId": 23,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 21,
+			"description": "You picked olive and cheese board",
+			"content": [
+				"A variety of food choices presented on a board is the ideal way experience fine dining.",
+				"Soon enough an assortment of breads, olives, and cheeses are within your wingspan.",
+				"The meal is satisfying, yet not overfilling as you often feel after a typical deli experience.",
+				"Maybe you should branch out more. Olive branch out."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "Pay the steep tab (oof) & head towards the Supercomputing Center with fiery independant research intentions",
+					"nextStepId": 24,
+					"addInventoryItems": []
+				},
+				{
+					"text": "Pay the steep tab (yikes) & ask that spicy scented bearded man if he knows anything about secret codes",
+					"nextStepId": 25,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 22,
+			"description": "You ordered breakfast for dinner at the boujee hipster joint.",
+			"content": [
+				"As an adult, truly no one can stop you from ordering breakfast for dinner.",
+				"A beautiful meal which consists of a venn diagram of both protein-packed options or sweet, sweet carbohydrate cakes.",
+				"The time of day doesn't confine you to the types of foods you consume! You are your own bird.",
+				"Being a <span class=\"substep\" data-substep=\"1\">boujee hipster bistro</span>, the breakfast options consist of lebda, salmon, and lemon poppyseed.",
+				"The food transports you into a state of bliss that is only interuppted by the nagging feeling you have an unsolved mystery at wing."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "The food IS delicious as it is expensive. Is this the natural progression of modern eating or is this a construct of gentrification AKA a more sinister manifestation of how the haves and have nots spend their time and money? Is a bistro just a bistro anymore?"
+				}
+			],
+			"choices": [
+				{
+					"text": "Pay the steep tab (oof) & head towards the Supercomputing Center with fiery independant research intentions",
+					"nextStepId": 24,
+					"addInventoryItems": []
+				},
+				{
+					"text": "Pay the steep tab (yikes) & ask that spicy scented bearded man on the way out if he knows anything about secret codes",
+					"nextStepId": 25,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 23,
+			"description": "Youve just entered the rum emporium",
+			"content": [
+				"As you enter the rum emporium, you take in your surroundings.",
+				"A no-frills bar, behind which sits two rotund copper distilleries.",
+				"A local art style <span class=\"substep\" data-substep=\"1\">sign</span> on the wall.",
+				"The owner himself, a surly gray dog in a plain white tee and gym shorts scratches behind his ear as he prepares a bucket full of soapy mop water in the back.",
+				"You take a seat and wonder how you could possibly ask in a casual way about binary codes on slips of paper.",
+				"A lively bartender appears..."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Sign: \"Venture Capitalists? More like Denture Crapitalists.\" Aggresive!"
+				}
+			],
+			"choices": [
+				{
+					"text": "oh-so-casually ask if the owner used to code",
+					"nextStepId": 27,
+					"addInventoryItems": []
+				},
+				{
+					"hide": true,
+					"text": "order a spicy bevvy & ask if they need someone to make them a website",
+					"nextStepId": 28,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 24,
+			"description": "Leave the boujee bistro after breakfast for din && go to the Supercomputing Center",
+			"content": [
+				"Your coin purse is considerably lighter, but your brain is fueled by nutrients aplenty.",
+				"The supercomputing center comes into view as you fly into the vicinity.",
+				"It's quittin time and some nerdy types slouch out of the building towards their Honda Civics.",
+				"You need to sneak into this bastion somehow to get ANSWERS."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "look for a rooftop vulnerability",
+					"nextStepId": 24,
+					"addInventoryItems": []
+				},
+				{
+					"text": "slouch with the best of them & pretend to be an employee who forgot a laptop charger",
+					"nextStepId": 24,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 25,
+			"description": "Ask that bearded man about binary code after breakfast for din",
+			"content": ["\"Hey there beardy-man..\" you trawl while stepping out the bistro.", "TODO"],
+			"substeps": [],
+			"choices": []
+		},
+		{
+			"id": 26,
+			"description": "You packed your sando & hit the road to the supercomputing center",
+			"content": ["You packed your sando & hit the road to the supercomputing center", "TODO"],
+			"substeps": [],
+			"choices": []
+		},
+		{
+			"id": 27,
+			"description": "you ask the rum bartender if the distillery owner used to code",
+			"content": [
+				"\"So uhh.. did the owner used to plink around on computer keys for a living?\" you ask with the subterfuge of a penguin in the rainforest.",
+				"The bartender side-eyes you. \"Sure did. Who's askin'?\"",
+				"You avoid his scary gaze and notice the same image from the paper carved into the wooden bartop. It has an anarchy symbol scratched over top.",
+				"After listening to the anti-authority crust punks you feel like you know a thing or two.",
+				"\"...A fellow hardcore anarchist, that's who,\" you nod towards the carving. \"And can I have one of those fruity coconut-pineapple drinks? Yes with the fun umbrella.\"",
+				"\"You mean a Painkiller?\" The bartender guffaws. \"Right, the owner Max is rather anti-authority. He hates his old company so much he did that when we opened this place.\"",
+				"Ehh? Just a company logo? Is this all some elaborate commercial?",
+				"The barkeep polishes a glass pensively and remarks, \"Yeah, he quit around the time of peak mech output. The MBOT-3000 had just been released. He was their top engineer and couldn't take anymore corporate crap. You know how it goes.\"",
+				"Ah! All those broken down police mechs rusting out under bridges: covered in leaves, garbage, and talentless graffiti. Company logo slapped on the sides, still visible under all the grime.",
+				"Something unlocks deep in the recesses of your birdy mind. You do know this logo. All too well."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "Tip and dip",
+					"nextStepId": 29,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 28,
+			"description": "you order a spicy bevvy & ask for computer work",
+			"content": [
+				"\"Hey there bar man. Shake me up one of those spicy tiki beverages. Extra spice, please,\" you order with machismo.",
+				"The barkeep grunts and slides down one glass of tiki torch.",
+				"You sip and hiccup a little flame. \"So, does this fine establishment need an online presence? I know a guy that can code - it's me. I'm the guy.\"",
+				"You puff out your chest to show how qualified you are.",
+				"The barkeep gives you a stern side-eye which makes a little smoke escape your beak in nervousness.",
+				"\"Eh, we're good on the website front. Max, the owner used to code back in the day and whipped us up a Screeact Site no problem.\"",
+				"He polishes a glass and ponders aloud, \"Hey Max, I never get any days off. Need an extra barkeep?\"",
+				"Max the owner grunts in approval as he mops the floor in back. \"Well, you gotta job slinging spicy drinks if you want it,\" the barkeep says to you without missing a beat.",
+				"As you consider, you notice the same symbol from the sheet of paper carved into the bartop with an anarchy symbol overtop. Edgy, ineed."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "skeptically accept the job",
+					"nextStepId": 31,
+					"addInventoryItems": []
+				},
+				{
+					"text": "tip & dip out. you'll hold out for that rando high-paying freelance work",
+					"nextStepId": 29,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 29,
+			"description": "tip that bartender well and head out",
+			"content": [
+				"You fly home to overanalyze the situation.",
+				"\"What the heck are these clues? Why do I even care? Do I have anything better to do? No? Why not???\"",
+				"Panic mounting, some foggy memories start materializing like the first eager trick-or-treaters on Halloween eve.",
+				"You really wish you could have a candy corn or something a little stronger right about now.",
+				"That company logo. Plastered everywhere in town.",
+				"Their mechs weren't always rusted out highway trash.",
+				"You remember how popular they were: a unit on every block 'keeping the peace.'",
+				"...peace for whom was the question.",
+				"Everyone cursed about the \"robots takin over!\" for a while. Initially they were an annoying bucket of cogs that doled out tickets and broke up drunken street fights.",
+				"On the other hand, they were helpful: routinely delivering groceries and online purchases.",
+				"There was a HUGE discount on delivery sign up on Saint Patricks Day. Everyone kept running out of shamrock themed beverages all too quickly in their merriment.",
+				"Mech customer accounts soared. Jobs as mechanics, programmers, and maintenance workers came to town. Robots became a fixture.",
+				"Life was good, although it felt conflicting at times...a policing delivery bot. What COULDN'T it do?",
+				"If a mech was at the door, were they bringing your pepperoni-jalepeno pizza or a ticket for a traffic infraction captured earlier that day on camera?",
+				"People still talked. But much quieter.",
+				"\"Is this the cost of convenience?\" they whispered.",
+				"Your trepidation rises.",
+				"Well that cost was certainly too high for one person. On that day in November.",
+				"It's getting late..."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "Be strong and face the memories",
+					"nextStepId": 35,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 30,
+			"description": "What a delicious house upgrade",
+			"content": [
+				"You wake the following morning with a start.",
+				"A dream...? You were holding cotton candy but then it turned to dirt and a flower grew out of it. It rains 0s and 1s, washing the flower into a drain.",
+				"Yeesh!! This mystery is consuming you. Knowing that things are best solved while the mind is idling, a break is in order.",
+				"Time to rustle up a distraction. You have the day off, after all.",
+				"Well, every day is off these days. Freedom!",
+				"Lack of income aside, you ponder who to ping for hanging out purposes."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "Hop on Friendspace.com",
+					"nextStepId": 32,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 31,
+			"description": "skeptically accept the job",
+			"content": ["TODO: do you dream of your former life here?"],
+			"substeps": [],
+			"choices": []
+		},
+		{
+			"id": 32,
+			"description": "Hop on Friendspace.com",
+			"content": [
+				"You ping Ira on <span class=\"substep\" data-substep=\"1\">Friendspace</span> and she pongs back.",
+				"She asks you if you'd like to come with her to a local art show featuring her paintings.",
+				"You enthusiastically agree.",
+				"PipVanWinkle46290: \"im so down its insane. wld luv 2 c ur art\",",
+				"xXIraBeanXx: \"ty, its gonna be sick af. wear something jazzy & c u soon\"",
+				"You jazz yourself up to the best of your ability, happy for a distraction.",
+				"Arriving fashionably 7 minutes late, you meet up with Ira outside the venue, an old factory building by the river.",
+				"Ira beams at you, \"Hey Pip, you clean up good! Let's check it out - I hear there are some real serious art appraisers here. Let's schmooze!\""
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "In a sea of social media, Friendspace reigns supreme. They only sell your data to organic data farms."
+				}
+			],
+			"choices": [
+				{
+					"text": "Sashay inside to schmooze",
+					"nextStepId": 34,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 33,
+			"description": "Carl, the warm-hearted crust punk",
+			"content": ["You ping Carl on <span class=\"substep\" data-substep=\"1\">Friendspace</span> and he pongs back."],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "In a sea of social media, Friendspace reigns supreme. They only sell your data to organic data farms."
+				}
+			],
+			"choices": []
+		},
+		{
+			"id": 34,
+			"description": "sashay inside for an art experience",
+			"content": [
+				"Entering the factory-turned-gallery, you are met with the sounds of vapor-dream-pop-n-bass and a feast for the eyes in more ways than art.",
+				"The attendees are dressed in their best <span class=\"substep\" data-substep=\"1\">blasé-chic</span>, and a table full of cheeses and crackerses is laid bountifully.",
+				"You relax into the rolling crowd sounds of opinions galore.",
+				"Ira takes your wing and leads you (away from the snacks) towards a specific wall of art.",
+				"You vow to return to the hors d'oeuvres, as you turn your head towards the display.",
+				"A series of oil paintings, depicting all sorts of beings in computer monitors, mainframes, and input devices.",
+				"They all seem to be struggling, into the sharp contrast of otherwise unmarred nature background the paintings are set in.",
+				"Ira pats you excitedly, \"These are mine. I really hope people like them... because I'm not sure I like them! Maybe that's normal for an arist?\"",
+				"One catches your eye, a depiction of a raccoon reaching it's adorable little paw through a hole in a brick wall.",
+				"On the other side of the wall, he picks a beautiful flower.",
+				"The flower looks far too large for him to pull it back through the hole. At least without all the petals and leaves getting scraped off in the process.",
+				"Floral themes should be a good thing right?",
+				"Ira catches you staring and says, \"Oh yeah. I thought you'd be into this one, with what you've been through. Hopefully it's kinda therapeutic. What do you feel?\""
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Felt hats with signature feathers, linen overalls, denim neckerchiefs, and deep-V-neck tees that reveal tattoos of bees and zodiac signs. You feel like a quaint lumberjack in your flannel n cuffed pantlegs."
+				}
+			],
+			"choices": [
+				{
+					"text": "Feels pointless",
+					"nextStepId": 36,
+					"addInventoryItems": []
+				},
+				{
+					"text": "At least he's trying",
+					"nextStepId": 37,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 35,
+			"description": "more memories",
+			"content": [
+				"You make yourself a cup of sleepy time tea and gaze at an indeterminate point on the gray horizon.",
+				"Yes. Until that one day.",
+				"Middle of November. The air was getting cold enough to make your face hurt.",
+				"That awkward time when lazy people still had Halloween decorations up.",
+				"And eager people displayed holiday lights and inflatable Santas.",
+				"That cold and gray day, a kid you went to grade school with decided to try and hotwire one of those mechs.",
+				"You still remember sitting next to her in 'Ethical AI' class. Everyone called her by her web handle, Fl4ppyh4x, or just Fl4ppy for short.",
+				"You still remember that time in elementary she got knocked down in gym class while playing tag. Her mom picked her up to get stitches. The whole class climbed the junglegym to wave as her mom's minivan pulled away.",
+				"She was young and curious. Had too much success hacking into rent-a-scooters and reselling them online. It must have gotten boring. She needed a new challenge.",
+				"What she didn't need was another trip to the hospital. This time for more than just stitches.",
+				"You shudder.",
+				"Maybe you should stop this information chase before it gets too dangerous.",
+				"No no no. No sir. You promised yourself convenient lies after it was already too late.",
+				"After you had realized too late what you contributed to the Grand Scheme of Things.",
+				"Oy vey. The tea is gone and the sleepy time is now.",
+				"You need to solve this for her. And for you.",
+				"You hunker down and hope to dream of a cotton candy nest."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "What a delicious house upgrade",
+					"nextStepId": 30,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 36,
+			"description": "Feels pointless",
+			"content": [
+				"You say \"It feels pointless. He can never see the flower, at least without ruining it.\"",
+				"Ira considers this for a moment.",
+				"She says, \"Maybe. But it also doesn't look like he's asking anyone for help. I bet someone would pass it to him if he asked. It would certainly fit through sideways.\"",
+				"You're taken aback by your own nihilistic opinions.",
+				"Then you notice there are other <span class=\"substep\" data-substep=\"1\">creatures</span> hidden in the frame outside the wall. Nearly hidden by the environment."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "They looks like friendly guys and gals. Serenely unaware of the flower struggle."
+				}
+			],
+			"choices": [
+				{
+					"text": "What else aren't you noticing?",
+					"nextStepId": 38,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 37,
+			"description": "At least he's trying",
+			"content": [
+				"As a bird who occasionally looks on the bright side of things, you say, \"He can't get the flower intact.. but at least he's trying?\"",
+				"Ira gives you a sideways glance.",
+				"\"Yes. He certainly is. But will he succeed alone?\"",
+				"Hmm ok. So obviously the answer is: no.",
+				"Don't you live <span class=\"substep\" data-substep=\"1\">alone</span>? Haven't you worked on everything in a vacuum space?",
+				"And where has that gotten you.",
+				"Upon closer inspection there are creatures on the other side of the wall. Blending into the background. Blissfully unaware of the raccoon struggle to obtain some beautious organic matter.",
+				"Ira smiles. \"Maybe they'd pass the flower through sideways to him. If he asked. Instead of just trying by himself.\""
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Sure, it's nice to have a crib to yourself. You get to pick the shows and watch weird anime without anyone judging you. But without the tv on... it does get quiet."
+				}
+			],
+			"choices": [
+				{
+					"text": "What else aren't you noticing?",
+					"nextStepId": 38,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 38,
+			"description": "What else aren't you noticing?",
+			"content": [
+				"Here you are, FEELING something while looking at art.",
+				"It's a bit overwhelming. Maybe you should eat some crackers to calm down.",
+				"Ira is engaged with other connoisseurs so you slip away to the refreshment table.",
+				"While pecking at some high-end triscuits, you spot a familiar face.",
+				"\"Carl!\" you exclaim, <span class=\"substep\" data-substep=\"1\">crumbs flying everywhere</span>.",
+				"Carl plays it cool and pretends not to notice your lack of social graces, but comes over. \"Sup, man? Whatchu been up to.\"",
+				"You share idle small talk then remember you ought to ask him about that paper.",
+				"\"So remember when we bombed down that hill big wheelie style... where did you find that paper you gave me anyways? What a weirdo prize.\"",
+				"Carl laughs. \"I don't know! It was the only thing in my pocket besides a matchbook and lovely portrait of my <span class=\"substep\" data-substep=\"2\">mother</span>.\"",
+				"He thinks for a minute. \"I was hanging around some abandoned office. There was a sign that said some lame company platitude like \"Hack til you're wack.\"",
+				"Shyly, he goes on, \"Gotta tag as much as I can and buildings are easier than climbing bridges to spray paint.\"",
+				"Awww. A cat who's afraid of heights? Darling sensitive Carl.",
+				"You internally and externally gulp. You know that sign. Looked at every day for years."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Smooth move, Ex-Lax. Way to spray triscuits everywhere. How many brand names are coming up lately??"
+				},
+				{
+					"id": 2,
+					"text": "Yeah, it would be much weirder to get a picture of his mom. Her names probably Deborah. She probably bakes a mean apple cobbler."
+				}
+			],
+			"choices": [
+				{
+					"text": "High five Carl, say goodbye to Ira, grab some road crackers, and split",
+					"nextStepId": 39,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 39,
+			"description": "High five Carl, say goodbye to Ira, grab some road crackers, and split",
+			"content": [
+				"Home again. You feel a bit anxious and pace around your nest.",
+				"That \"Hack til you're wack\" sign was a <span class=\"substep\" data-substep=\"1\">value-projection</span> centerpiece of your old tech agency, ServerFarm.",
+				"Yeah, you used to be a regular old <span class=\"substep\" data-substep=\"2\">working bird</span>.",
+				"So this paper had to come from there. The ink stamp on the bottom is from the Mech company.",
+				"Mechaglory.",
+				"Yes. You remember the outsourced project you did for Mechaglory. Didn't think much of it, just another series of widgets to code.",
+				"The execs of ServerFarm were so happy. Finally! A huge contract with Mechaglory!",
+				"How were you supposed to know it was a blueprint for upgraded Mech security?",
+				"A heavier hitting upgrade.",
+				"How were you supposed to know the upgrade would knock Fl4ppyH4x into the next dimension?",
+				"You sit down, defeated."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Other company values included: Code like there's no tomorrow! Work fast and live dangerously! Don't hold hands with your coworkers!"
+				},
+				{
+					"id": 2,
+					"text": "Now you're sticking it to THE MAN or WOMAN. Equal opportunity defiance."
+				}
+			],
+			"choices": [
+				{
+					"text": "It's your fault",
+					"nextStepId": 40,
+					"addInventoryItems": []
+				},
+				{
+					"text": "It's NOT your fault",
+					"nextStepId": 41,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 40,
+			"description": "It's your fault",
+			"content": [
+				"You decide it's all your fault after all.",
+				"You built the security program without a second thought. Fl4ppyH4x would be just fine, if you didn't build that code so securely, so efficiently.",
+				"So much for ethical AI.",
+				"It's a good thing she was brave enough to take down every robot deathtrap, Mechaglory, and ServerFarm.",
+				"She reprogrammed every Mech to self-destruct then everything collapsed.",
+				"Investors in Mechaglory withdrew.",
+				"Jobs disappeared.",
+				"Pizzas weren't delivered.",
+				"But everyone sighed a unexpected breath of relief.",
+				"You could have brought the whole thing down with your own code, but too bad you were a corporate drone.",
+				"And Fl4ppyH4x would still be hawking rent-a-scooters online instead of on life support. But you? Sitting comfortably in your nest?",
+				"Avoiding the truth in exchange for convenient lies.",
+				"You're exhausted. The memories bear down on you like 100 <span class=\"substep\" data-substep=\"1\">bears</span>."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Hibernation-ready bears all fattened up for their long winter snooze. They ALWAYS get extended work time off for this and miss the company holiday parties!"
+				}
+			],
+			"choices": [
+				{
+					"text": "comfy nest, uncomfy sleep",
+					"nextStepId": 42,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 41,
+			"description": "It's NOT your fault",
+			"content": [
+				"No. It's not your fault - at least not completely.",
+				"The project's intentions were purposefully obfuscated by management (as usual). You didn't know the security measures would injure a citizen.",
+				"And how could you test that in production?",
+				"You played a role in Fl4ppyH4x getting hurt, yes. But if you didn't build it, some other developer would have gotten the tasks and been blindsided.",
+				"Fl4ppyH4x would have found a way into those mechs somehow to reprogram them to self destruct.",
+				"She still would've brought every single machine (and Mechaglory) to it's knees.",
+				"She redirected every Mech's protocol to self-destruct. Then everything collapsed.",
+				"It's a good thing she was brave enough to take down every robot deathtrap, Mechaglory, and ServerFarm.",
+				"Because that code - YOUR code - should've never been unleashed onto citizens. The people in charge are not just orchestrators of smoke and mirrors, but monsters profiteering at the cost of citizens wellbeing.",
+				"What good is beating yourself up for this over and over?",
+				"Maybe you can make it better.",
+				"Somehow, even though all the mechs are down.",
+				"Even if it's small.",
+				"Maybe you can reach out for help.",
+				"And be more than an adorable painting of a raccoon with grabby hands, trying to get a flower all by himself."
+			],
+			"substeps": [],
+			"choices": [
+				{
+					"text": "sleep with the intent to fix things",
+					"nextStepId": 43,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 42,
+			"description": "comfy nest, uncomfy sleep",
+			"content": [
+				"You wake up with a start. Your birdy stomach is in knots.",
+				"Is this hunger?? No. Is this opposite day?? No...",
+				"Corn chips don't look appealing and you feel a little shaky.",
+				"You remember the revelations of the previous night and the <span class=\"substep\" data-substep=\"1\">anti-hunger</span> intensifies.",
+				"What can you do to make it right? Maybe it's too late but you have to find out.",
+				"You don't know F4ppyH4x's whereabouts but it's time to face your old stomping grounds, ServerFarm.",
+				"You haven't been there since the day you walked out after hearing about the Mech hack and all the <span class=\"substep\" data-substep=\"2\">media fallout</span> placing the blame on Mechaglory.",
+				"Then ServerFarm became a GhostFarm due to the legal fees causing the company to go bankrupt.",
+				"Everyone vacated the premises and the building was abandoned faster than the <span class=\"substep\" data-substep=\"3\">worst fashion choices from the 90s</span>.",
+				"Maybe there are some archived data to snag a few clues from.",
+				"Maybe some archived office snacks once you get your appetite back. Expiration dates on food are more like suggestions anyways."
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "Some appetite stealing thief has stolen the joy of eating. O cruel fateful monster, please giveth back mine fervent desire to consume chips and dip."
+				},
+				{
+					"id": 2,
+					"text": "Who immediately deferred (some) of the blame to ServerFarm. Once the popular news outlet TechMunch.com got ahold of the story it exploded. The bomb blast of Big tech blame was large enough that the blame-shrapnel pierced your old company as well."
+				},
+				{
+					"id": 3,
+					"text": "Puka shell necklaces. Sweatsuits and Uuughs boots. Short sleeves over long sleeves. Your choice of bell bottom low rise or parachute denim."
+				}
+			],
+			"choices": [
+				{
+					"text": "swoop on over to the SeverFarm graveyard",
+					"nextStepId": 44,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 43,
+			"description": "sleep with the intent to fix things",
+			"content": [
+				"You wake up and feel ready to <span class=\"substep\" data-substep=\"1\">take on the day</span>.",
+				"Reaching out for help to figure out how to make amends for your fateful mech code for security protocol seems like a good start.",
+				"You don't know F4ppyH4x's whereabouts but it's time to face your old <span class=\"substep\" data-substep=\"2\">stomping grounds</span>.",
+				"Since ServerFarm employees vacated the premises and the building was abandoned faster than the <span class=\"substep\" data-substep=\"3\">worst fashion choices from the 90s</span>.",
+				"You know you should go to ServerFarm to find some clue in the archives, but bringing someone along might make the visit less eerie and intimidating.",
+				"Who should you ask?"
+			],
+			"substeps": [
+				{
+					"id": 1,
+					"text": "That 80s song Take on Me by a-ha gets stuck in your head as a result. You'd love to tell Ira about it. Talking to her seems to calm you down. You don't know what to say, but you'll say it anyways."
+				},
+				{
+					"id": 2,
+					"text": "Looks like ServerFarm is Carl's new stomping grounds. He may know a way into the building since you'd bet your best feathers everything is locked up tight."
+				},
+				{
+					"id": 3,
+					"text": "Puka shell necklaces. Sweatsuits and Uuughs boots. Short sleeves over long sleeves. Your choice of bell bottom low rise or parachute jeans."
+				}
+			],
+			"choices": [
+				{
+					"text": "ask Carl, he seems to be familiar with the place",
+					"nextStepId": 45,
+					"addInventoryItems": []
+				},
+				{
+					"text": "Ira can read binary code, a useful asset for this mission",
+					"nextStepId": 46,
+					"addInventoryItems": []
+				}
+			]
+		},
+		{
+			"id": 44,
+			"description": "swoop on over to the SeverFarm graveyard",
+			"content": ["TODO"],
+			"substeps": [],
+			"choices": []
+		},
+		{
+			"id": 45,
+			"description": "ask Carl, he seems to be familiar with the place",
+			"content": [],
+			"substeps": [],
+			"choices": []
+		},
+		{
+			"id": 46,
+			"description": "Ira can read binary code, a useful asset for this mission",
+			"content": [
+				"You hop back on Friendspace.com and ignore 250 ads for birdseed and cotton candy while pulling up your friend messages.",
+				"Looks like you have a missed message from Ira already.",
+				"xXIraBeanXx: \"hey dude. \"",
+				"PipVanWinkle46290: \"\","
+			],
+			"substeps": [],
+			"choices": []
+		},
+		{
+			"id": 47,
+			"description": "",
+			"content": [],
+			"substeps": [],
+			"choices": []
+		},
+		{
+			"id": 48,
+			"description": "",
+			"content": [],
+			"substeps": [],
+			"choices": []
+		}
+	]
 }

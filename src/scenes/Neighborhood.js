@@ -4,7 +4,7 @@ import Phaser from 'phaser';
 import Player from '../prefabs/Player';
 
 // Utils
-import { createTextBox } from '../utils/textBox';
+// import { createTextBox } from '../utils/textBox';
 
 // Game variables
 let player;
@@ -104,13 +104,13 @@ export default class Neighborhood extends Phaser.Scene {
 
   talkToNPC() {
     // Add a textbox if one isnt open
-    if (!textBoxIsOpen) {
-      this.textBox = createTextBox(this, 50, 150, textBoxIsOpen, {
-        wrapWidth: 200,
-        fixedWidth: 200,
-        fixedHeight: 35,
-      })
-      .start(sampleText, 20);
-    }
+    // if (!textBoxIsOpen) {
+    //   this.textBox = createTextBox(this, 50, 150, textBoxIsOpen, {
+    //     wrapWidth: 200,
+    //     fixedWidth: 200,
+    //     fixedHeight: 35,
+    //   })
+    //   .start(sampleText, 20);
+    // }
   }
 }

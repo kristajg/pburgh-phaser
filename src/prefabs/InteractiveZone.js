@@ -6,7 +6,7 @@ export default class InteractiveZone extends Phaser.GameObjects.Zone {
 
     this.scene = scene;
     this.x = x + (width / 2);
-    this.y = y;
+    this.y = y + (height / 2);
     this.height = height;
     this.width = width;
     this.properties = properties;

@@ -3,17 +3,60 @@
   "storyline": [
     {
       "interactiveName": "computer",
+      "hasSelection": false,
 			"content": [
-				"It's your computer. With the nets and video games.",
-				"No time to play Nest of Birdcraft, you gotta check your work schedule. Boss always posts it last minute.",
-				"And as the star employee of Crouton Italiano (and chief billpayer of your own life) you gotta be on time!"
+        {
+          "mainText": [
+            "It's your computer.",
+            "Hey - no time to play Nest of Birdcraft!",
+            "Check your work schedule. Boss always posts it online last minute."
+          ]
+        }
 			]
     },
     {
       "interactiveName": "bed",
+      "hasSelection": false,
       "content": [
-        "Bro, you just woke up. Save those ZZZ's for night time.",
-        "Night owls don't make it to the morning shift on time."
+        {
+          "mainText": [
+            "Yo, you just woke up. Save those Zzz's for later.",
+            "Anyways, don't you have somewhere else to be?"
+          ]
+        }
+      ]
+    },
+    {
+      "interactiveName": "fridge",
+      "hasSelection": true,
+      "content": [
+        {
+          "mainText": [
+            "Yawwwn. You check the fridge. Time for breaky.",
+            "That's short for breakfast."
+          ]
+        },
+        {
+          "selection": {
+            "mainText": "What do you want for breaky?",
+            "options": [
+              {
+                "id": 1,
+                "optionText": "Classic corn chips",
+                "followUpText": [
+                  "you selected corn chip"
+                ]
+              },
+              {
+                "id": 2,
+                "optionText": "Coffee",
+                "followUpText": [
+                  "you selected coffee"
+                ]
+              }
+            ]
+          }
+        }
       ]
     }
   ]
