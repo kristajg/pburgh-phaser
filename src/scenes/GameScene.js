@@ -10,19 +10,15 @@ export default class GameScene extends Phaser.Scene {
   preload() {}
 
   create() {
-    // this.count = 0;
     this.scene.run('UIScene');
 
-    // this.input.keyboard.on('keydown-SPACE', () => {
-    //   ++this.count;
-    //   eventsCenter.emit('update-count', this.count);
-    // });
-  
-    // this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
-    //   this.input.keyboard.off('keydown-SPACE');
-    // });
-
-    this.scene.start('PipsHouse');
+    // If game is a new game (no save file) show the IntroScene
+    const saveFileExists = sessionStorage.getItem('pigeonburghGameBool');
+    if (saveFileExists && saveFileExists) {
+      this.scene.start('PipsHouse');
+    } else {
+      this.scene.start('IntroScene');
+    }
   }
 
   update() {}
