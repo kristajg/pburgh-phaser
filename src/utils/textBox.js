@@ -44,14 +44,14 @@ export const createSelectionOptions = (scene, optionData) => {
     let text = option.optionText;
     if (i===0) {
       // By default add cursor to first option
-      text = `>> ${text}`;
+      text = `> ${text}`;
     }
     bitmapTextOptionList.push(scene.add.bitmapText(optionXCoordinate, optionYCoordinate, 'arial', text, 16).setMaxWidth(340));
     optionYCoordinate = optionYCoordinate + 25;
   });
 
   // By default highlight first option
-  bitmapTextOptionList[0].setTint(0xcbdbfc);
+  bitmapTextOptionList[0].setTint(0xfacb3e);
   return bitmapTextOptionList;
 }
 
