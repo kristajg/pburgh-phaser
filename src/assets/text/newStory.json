@@ -2,17 +2,22 @@
 	"version": "1.0.0",
   "introScene": [
     "Welcome to Pigeonburgh. A city full of opportunity and corn chips.",
-    "It's the year 2087, and a technocracy has deployed an elite force of automated multi-purpose robots called XXXXmechs.",
-    "These XXXXmechs deliver virutally anything you can think of to order right to you doorstep...",
+    "It's the year 2087, and a technocracy has deployed a fleet of automated multi-purpose robots called X-Mechs.",
+    "Anything you can think of to order, the X-Mechs deliver within two hours right to your doorstep...",
     "..or window or balcony!",
-    "The XXXXmechs flight-delivery upgrade was a crowd favorite amongst the high-rise apartment dwellers of Pigeonburgh.",
-    "They also keep the peace. Keep it real good.",
+    "Convenient, indeed.",
+    "The flight delivery upgrade was a crowd favorite among the high-rise apartment dwellers of Pigeonburgh.",
+    "Outside of speedy delivery, the X-Mechs also keep the peace. Keep it real good.",
+    "It's a saftey subscription service no one can opt-out of.",
+    "Oh don't worry, it's fine for the most part. Just don't commit any crimes or accidentally litter.",
+    "Anyways.",
     "You are a city pigeon named Pip in your prime. How coo is that? You reckon it's pretty coo.",
     "Yawwwwn. You wake up in your apartment on the North side of Pigeonburgh.",
-    "You remember you might have work today... maybe?",
-    "Better check the schedule... boss always posts it online."
+    "You remember you might have work today...",
+    "Ugh. Your bird brain isn't reliable. Better check the schedule, boss always posts it online.",
+    "And so it begins."
   ],
-  "storyLine": [
+  "storyline": [
     {
       "interactiveName": "computer",
       "hasSelection": false,
