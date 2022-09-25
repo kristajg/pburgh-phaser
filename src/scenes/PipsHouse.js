@@ -12,9 +12,7 @@ let player;
 let keys;
 let isInZone = false;
 let speechBubble;
-let textBoxOpen = false;
 let currentInteractiveName;
-let currentInteractiveType;
 let isEnterPressedOnce = false;
 
 export default class PipsHouse extends Phaser.Scene {
@@ -25,19 +23,10 @@ export default class PipsHouse extends Phaser.Scene {
   preload() {}
 
   create() {
-    // text box visibility listener
-    eventsCenter.on('toggle-text-box-visibility', this.toggleTextBoxOpen, this);
-
-    // clean up listeners on scene shut down
-    this.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
-      eventsCenter.off('toggle-text-box-visibility', this.toggleTextBoxOpen, this);
-    });
-
     // Initialize keys
-    const { ENTER, ESC } = Phaser.Input.Keyboard.KeyCodes;
+    const { ENTER } = Phaser.Input.Keyboard.KeyCodes;
     keys = this.input.keyboard.addKeys({
       enter: ENTER,
-      esc: ESC,
     });
 
     // Tilemaps
@@ -74,16 +63,8 @@ export default class PipsHouse extends Phaser.Scene {
 
     // Press enter to open textbox
     if (speechBubble.visible && isEnterPressedOnce) {
-      eventsCenter.emit('show-text-box', { scene: this, currentInteractiveName, currentInteractiveType });
-      eventsCenter.emit('toggle-text-box-visibility', true);
-
-      // Freeze pip during dialog
       player.body.moves = false;
-    }
-
-    // Press enter while text box is open to advance text
-    if (textBoxOpen && isEnterPressedOnce) {
-      eventsCenter.emit('advance-text-box', { scene: this, player });
+      eventsCenter.emit('enter-key-pressed', { scene: this, player, currentInteractiveName });
     }
 
     if (speechBubble.visible && !isInZone) {
@@ -92,16 +73,11 @@ export default class PipsHouse extends Phaser.Scene {
     isInZone = false;
   }
 
-  toggleTextBoxOpen(status) {
-    textBoxOpen = status;
-  }
-
   overlapWithInteractive(player, zone) {
     speechBubble.setPosition(zone.x, zone.y - 22);
     speechBubble.visible = true;
     isInZone = true;
     currentInteractiveName = zone.name;
-    currentInteractiveType = zone.type;
   }
 
   overlapWithSceneChange(player, zone) {
