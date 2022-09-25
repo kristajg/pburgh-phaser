@@ -1,6 +1,18 @@
 {
 	"version": "1.0.0",
-  "storyline": [
+  "introScene": [
+    "Welcome to Pigeonburgh. A city full of opportunity and corn chips.",
+    "It's the year 2087, and a technocracy has deployed an elite force of automated multi-purpose robots called XXXXmechs.",
+    "These XXXXmechs deliver virutally anything you can think of to order right to you doorstep...",
+    "..or window or balcony!",
+    "The XXXXmechs flight-delivery upgrade was a crowd favorite amongst the high-rise apartment dwellers of Pigeonburgh.",
+    "They also keep the peace. Keep it real good.",
+    "You are a city pigeon named Pip in your prime. How coo is that? You reckon it's pretty coo.",
+    "Yawwwwn. You wake up in your apartment on the North side of Pigeonburgh.",
+    "You remember you might have work today... maybe?",
+    "Better check the schedule... boss always posts it online."
+  ],
+  "storyLine": [
     {
       "interactiveName": "computer",
       "hasSelection": false,
