@@ -10,13 +10,12 @@ import { isKeyPressedOnce } from '../utils/input';
 let keys;
 let textBox;
 let textBoxOpen = false;
-let currentSelectionIndex = 0;
-let currentTextIndex = 0;
+let selectionIndex = 0;
+let textIndex = 0;
 let textContentList = [];
 let textSelectionOptions = [];
 let isUpPressedOnce = false;
 let isDownPressedOnce = false;
-
 
 export default class UIScene extends Phaser.Scene {
   constructor() {
@@ -24,7 +23,7 @@ export default class UIScene extends Phaser.Scene {
   }
 
   create() {
-    // Initialize keys
+    // initialize keys
     const { UP, DOWN } = Phaser.Input.Keyboard.KeyCodes;
     keys = this.input.keyboard.addKeys({
       up: UP,
@@ -33,14 +32,9 @@ export default class UIScene extends Phaser.Scene {
 
     // event listeners
     eventsCenter.on('enter-key-pressed', this.enterKeyPressed, this);
-
-    // this.label = this.add.text(10, 10, 'UISCENE', { fontSize: 28 });
-    // listen to 'update-count' event & call `updateCount()` when it fires
-    // eventsCenter.on('update-count', this.updateCount, this);
   
-    // clean up when Scene is shutdown
+    // clean up listeners on scene shutdown
     this.events.on(Phaser.Scenes.Events.SHUTDOWN, () => {
-      // eventsCenter.off('update-count', this.updateCount, this);
       eventsCenter.off('enter-key-pressed', this.enterKeyPressed, this);
     });
   }
@@ -61,21 +55,21 @@ export default class UIScene extends Phaser.Scene {
 
   changeSelection(selectionDirection){
     const totalOptions = textSelectionOptions.length - 1;
-    const previousSelectionIndex = currentSelectionIndex;
+    const previousSelectionIndex = selectionIndex;
     const cursorText = '> ';
 
     switch(selectionDirection) {
       case 'up':
-        currentSelectionIndex--;
-        if (currentSelectionIndex === -1) {
-          currentSelectionIndex = totalOptions;
+        selectionIndex--;
+        if (selectionIndex === -1) {
+          selectionIndex = totalOptions;
         }
         break;
       case 'down':
-        if (currentSelectionIndex === totalOptions) {
-          currentSelectionIndex = 0;
+        if (selectionIndex === totalOptions) {
+          selectionIndex = 0;
         } else {
-          currentSelectionIndex++;
+          selectionIndex++;
         }
         break;
       default:
@@ -83,11 +77,11 @@ export default class UIScene extends Phaser.Scene {
     }
 
     const previousSelectionText = textSelectionOptions[previousSelectionIndex].text;
-    const currentSelectionText = textSelectionOptions[currentSelectionIndex].text
+    const currentSelectionText = textSelectionOptions[selectionIndex].text
     textSelectionOptions[previousSelectionIndex].setText(previousSelectionText.slice(2));
-    textSelectionOptions[currentSelectionIndex].setText(cursorText.concat(currentSelectionText));
+    textSelectionOptions[selectionIndex].setText(cursorText.concat(currentSelectionText));
     textSelectionOptions[previousSelectionIndex].setTint(0xffffff);
-    textSelectionOptions[currentSelectionIndex].setTint(0xfacb3e);
+    textSelectionOptions[selectionIndex].setTint(0xfacb3e);
   }
 
   showTextBox(scene, currentInteractiveName) {
@@ -102,7 +96,7 @@ export default class UIScene extends Phaser.Scene {
     if(textBox) {
       const { textBoxBackGround, textBoxContent } = textBox;
       textBoxOpen = false;
-      currentTextIndex = 0;
+      textIndex = 0;
       textBoxBackGround.destroy();
       textBoxContent.destroy();
       textBox = null;
@@ -111,30 +105,30 @@ export default class UIScene extends Phaser.Scene {
   }
 
   advanceTextBox(scene, player) {
-    currentTextIndex++;
+    textIndex++;
 
-    if (currentTextIndex >= textContentList.length) {
+    if (textIndex >= textContentList.length) {
       // close textbox if the end of content is reached
       this.hideTextBox(player);
     } else {
-      // proceed to next contect
+      // proceed to next content element
       const { textBoxContent } = textBox;
-      const isSelectionObject = typeof textContentList[currentTextIndex] === 'object';
+      const isSelectionObject = typeof textContentList[textIndex] === 'object';
       if (isSelectionObject) {
         // Set main text as the selection prompt
-        textBoxContent.setText(textContentList[currentTextIndex].mainText);
+        textBoxContent.setText(textContentList[textIndex].mainText);
   
         // add selections to the textbox
-        textSelectionOptions = createSelectionOptions(scene, textContentList[currentTextIndex].options);
+        textSelectionOptions = createSelectionOptions(scene, textContentList[textIndex].options);
       } else {
         // advance textContent to the next item in the array
-        textBoxContent.setText(textContentList[currentTextIndex]);
+        textBoxContent.setText(textContentList[textIndex]);
       }
     }
   }
 
   playerSelectedOption(scene, player) {
-    const selectedItem = textContentList[currentTextIndex].options[currentSelectionIndex];
+    const selectedItem = textContentList[textIndex].options[selectionIndex];
     // update textContentList with follow up text for the selected item
     textContentList = textContentList.concat(selectedItem.followUpText);
 
@@ -144,7 +138,7 @@ export default class UIScene extends Phaser.Scene {
     // destroy choices bitmap objects && reset selection variables
     textSelectionOptions.forEach(option => option.destroy());
     textSelectionOptions = [];
-    currentSelectionIndex = 0;
+    selectionIndex = 0;
 
     // advance textbox to the follow up text
     this.advanceTextBox(scene, player);
@@ -160,8 +154,4 @@ export default class UIScene extends Phaser.Scene {
       this.advanceTextBox(scene, player);
     }
   }
-
-  // updateCount(count) {
-  //   this.label.text = `Count: ${count}`;
-  // }
 }
