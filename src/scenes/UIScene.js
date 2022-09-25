@@ -133,12 +133,29 @@ export default class UIScene extends Phaser.Scene {
     }
   }
 
-  enterKeyPressed(data) {
-    // TODO: handle enter press to select option & add to localStorage...then advance to final wrap up text!
+  playerSelectedOption(scene, player) {
+    const selectedItem = textContentList[currentTextIndex].options[currentSelectionIndex];
+    // update textContentList with follow up text for the selected item
+    textContentList = textContentList.concat(selectedItem.followUpText);
 
+    // store choice in sessionStorage (for now)
+    window.sessionStorage.setItem('choiceId', selectedItem.id);
+
+    // destroy choices bitmap objects && reset selection variables
+    textSelectionOptions.forEach(option => option.destroy());
+    textSelectionOptions = [];
+    currentSelectionIndex = 0;
+
+    // advance textbox to the follow up text
+    this.advanceTextBox(scene, player);
+  }
+
+  enterKeyPressed(data) {
     const { scene, player, currentInteractiveName } = data;
     if (!textBoxOpen) {
       this.showTextBox(scene, currentInteractiveName);
+    } else if(textSelectionOptions.length) {
+      this.playerSelectedOption(scene, player);
     } else {
       this.advanceTextBox(scene, player);
     }
